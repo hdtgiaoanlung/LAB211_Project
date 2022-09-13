@@ -39,28 +39,18 @@ public class QuickSort {
         int i = startIndex - 1;
         for (int j = startIndex; j < endIndex - 1; j++) {
             if (isAsc) {
-                if (arr[j] < pivot) {
+                if (arr[j] > pivot) {
                     i++;
                     ArrayUtils.swap(arr, i, j);
                 }
             } else {
-                if (arr[j] > pivot) {
+                if (arr[j] < pivot) {
                     i++;
                     ArrayUtils.swap(arr, i, j);
                 }
             }
         }
         ArrayUtils.swap(arr, i + 1, endIndex);
-        return i + 1;
+        return (i + 1);
     }
-
-    public void displayCompare() {
-        System.out.println("Original array: ");
-        ArrayUtils.displayIntArray(arr);
-        System.out.println("Ascending array: ");
-        ArrayUtils.displayIntArray(getSortedArray(true));
-        System.out.println("Descending array: ");
-        ArrayUtils.displayIntArray(getSortedArray(false));
-    }
-
 }
