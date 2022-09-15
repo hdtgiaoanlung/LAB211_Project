@@ -21,33 +21,26 @@ public class QuickSort {
         cloneArray = arr;
     }
 
-    private void sort(boolean isAsc, int startIndex, int endIndex) {
+    private void sort(int[] arr, boolean isAsc, int startIndex, int endIndex) {
         if (startIndex < endIndex) {
             int partitionIndex = partition(cloneArray, startIndex, endIndex, isAsc);
-            sort(isAsc, startIndex, partitionIndex - 1);
-            sort(isAsc, partitionIndex + 1, endIndex);
+            sort(arr, isAsc, startIndex, partitionIndex - 1);
+            sort(arr, isAsc, partitionIndex + 1, endIndex);
         }
     }
 
     public int[] getSortedArray(boolean isAsc) {
-        sort(isAsc, 0, cloneArray.length - 1);
+        sort(cloneArray, isAsc, 0, cloneArray.length - 1);
         return cloneArray;
     }
 
     private int partition(int arr[], int startIndex, int endIndex, boolean isAsc) {
         int pivot = arr[endIndex];
         int i = startIndex - 1;
-        for (int j = startIndex; j < endIndex - 1; j++) {
-            if (isAsc) {
-                if (arr[j] > pivot) {
-                    i++;
-                    ArrayUtils.swap(arr, i, j);
-                }
-            } else {
-                if (arr[j] < pivot) {
-                    i++;
-                    ArrayUtils.swap(arr, i, j);
-                }
+        for (int j = startIndex; j <= endIndex - 1; j++) {
+            if (isAsc ? arr[j] < pivot : arr[j] > pivot) {
+                i++;
+                ArrayUtils.swap(arr, i, j);
             }
         }
         ArrayUtils.swap(arr, i + 1, endIndex);
