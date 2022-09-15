@@ -22,6 +22,11 @@ public class Main {
         int arrLength = NumberUtils.inputInt("Input length of Array: ", 1, Integer.MAX_VALUE);
         int arr[] = ArrayUtils.randomIntArray(arrLength, 0, 500);
         SelectionSort s = new SelectionSort(arr);
-        s.displayCompare();
+        System.out.println("Original arr: ");
+        ArrayUtils.displayIntArray(arr);
+        System.out.println("Ascending arr: ");
+        ArrayUtils.displayIntArray(s.getSortedArray(true));
+        System.out.println("Descending arr: ");
+        ArrayUtils.displayIntArray(s.getSortedArray(false));
     }
 }

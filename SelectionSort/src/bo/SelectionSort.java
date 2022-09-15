@@ -27,27 +27,23 @@ public class SelectionSort {
             array = ArrayUtils.cloneArray(arr);
         }
         for (int i = 0; i < array.length - 1; i++) {
-            if (isAsc) {
-                int minPos = ArrayUtils.findMinPosition(array, i);
-                ArrayUtils.swap(array, minPos, i);
-            } else {
-                int maxPos = ArrayUtils.findMaxPosition(array, i);
-                ArrayUtils.swap(array, maxPos, i);
-            }
+            int pos = findPosition(array, isAsc, i);
+            ArrayUtils.swap(array, i, pos);
         }
         return array;
     }
 
-    public int[] getSortedArray(boolean isAsc) {
-        return sort(false, isAsc);
+    private int findPosition(int[] arr, boolean isAsc, int startIndex) {
+        int pos = startIndex;
+        for (int i = startIndex; i < arr.length; i++) {
+            if (isAsc ? arr[i] < arr[pos] : arr[i] > arr[pos]) {
+                pos = i;
+            }
+        }
+        return pos;
     }
 
-    public void displayCompare() {
-        System.out.println("Original arr: ");
-        ArrayUtils.displayIntArray(arr);
-        System.out.println("Ascending arr: ");
-        ArrayUtils.displayIntArray(getSortedArray(true));
-        System.out.println("Descending arr: ");
-        ArrayUtils.displayIntArray(getSortedArray(false));
+    public int[] getSortedArray(boolean isAsc) {
+        return sort(false, isAsc);
     }
 }
