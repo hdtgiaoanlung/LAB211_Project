@@ -56,25 +56,4 @@ public class ArrayUtils {
         }
         return ret;
     }
-
-    public static int findMinPosition(int arr[], int startIndex) {
-        int minPos = startIndex;
-        for (int i = startIndex + 1; i < arr.length; i++) {
-            if (arr[i] < arr[minPos]) {
-                minPos = i;
-            }
-        }
-        return minPos;
-    }
-
-    public static int findMaxPosition(int arr[], int startIndex) {
-        int maxPos = startIndex;
-        for (int i = startIndex + 1; i < arr.length; i++) {
-            if (arr[i] > arr[maxPos]) {
-                maxPos = i;
-            }
-        }
-        return maxPos;
-    }
-
 }
