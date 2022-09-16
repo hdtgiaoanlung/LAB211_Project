@@ -23,7 +23,7 @@ public class QuickSort {
 
     private void sort(int[] arr, boolean isAsc, int startIndex, int endIndex) {
         if (startIndex < endIndex) {
-            int partitionIndex = partition(cloneArray, startIndex, endIndex, isAsc);
+            int partitionIndex = partition(arr, startIndex, endIndex, isAsc);
             sort(arr, isAsc, startIndex, partitionIndex - 1);
             sort(arr, isAsc, partitionIndex + 1, endIndex);
         }
