@@ -34,14 +34,6 @@ public class ArrayUtils {
         System.out.println("]");
     }
 
-    public static int[] randomIntArray(int length, int min, int max) {
-        int[] array = new int[length];
-        for (int i = 0; i < length; i++) {
-            array[i] = NumberUtils.getRandomNumberInRange(min, max);
-        }
-        return array;
-    }
-
     public static void swap(int array[], int index1, int index2) {
         int tmp = array[index1];
         array[index1] = array[index2];
