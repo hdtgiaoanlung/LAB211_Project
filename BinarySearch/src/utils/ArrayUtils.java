@@ -43,23 +43,4 @@ public class ArrayUtils {
         }
         return ret;
     }
-
-    public static int BinarySearch(int[] arr, int searchValue) {
-        int low = 0;
-        int high = arr.length - 1;
-        int mid = 0;
-        while (low < high) {
-            mid = (high - low) / 2 + 1;
-            if (searchValue > arr[mid]) {
-                low = mid;
-            }
-            if (searchValue < arr[mid]) {
-                high = mid;
-            }
-        }
-        if (searchValue == arr[mid]) {
-            return mid;
-        }
-        return -1;
-    }
 }

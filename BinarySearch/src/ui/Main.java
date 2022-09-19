@@ -4,7 +4,7 @@
  */
 package ui;
 
-import bo.QuickSort;
+import bo.BinarySearch;
 import utils.*;
 
 /**
@@ -17,16 +17,14 @@ public class Main {
 
         int length = NumberUtils.inputInt("Enter the length of the array: ");
 
-        int[] arr = new int[length];
-        arr = ArrayUtils.getRandomArray(length, 0, 10);
-        QuickSort qs = new QuickSort(arr);
-        arr = qs.getSortedArray(true);
+        int[] arr = ArrayUtils.getRandomArray(length, 0, 10);
 
         int searchValue = NumberUtils.inputInt("Enter the search value: ");
+        BinarySearch bs = new BinarySearch(arr);
         
         ArrayUtils.displayIntArray(arr);
 
-        int pos = ArrayUtils.BinarySearch(arr, searchValue);
+        int pos = bs.getSearchIndex(searchValue);
         if (pos == -1) {
             System.out.println("Not found!");
         } else {
