@@ -21,10 +21,10 @@ public class Main {
 
         int searchValue = NumberUtils.inputInt("Enter the search value: ");
         BinarySearch bs = new BinarySearch(arr);
-        
-        ArrayUtils.displayIntArray(arr);
 
         int pos = bs.getSearchIndex(searchValue);
+        System.out.println("Sorted Array: ");
+        System.out.println(bs.sort());
         if (pos == -1) {
             System.out.println("Not found!");
         } else {

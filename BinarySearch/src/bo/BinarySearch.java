@@ -45,4 +45,9 @@ public class BinarySearch {
             this.arr.add(i);
         }
     }
+    
+    public ArrayList<Integer> sort(){
+        Collections.sort(arr);
+        return arr;
+    }
 }
