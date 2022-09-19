@@ -23,6 +23,8 @@ public class Main {
         arr = qs.getSortedArray(true);
 
         int searchValue = NumberUtils.inputInt("Enter the search value: ");
+        
+        ArrayUtils.displayIntArray(arr);
 
         int pos = ArrayUtils.BinarySearch(arr, searchValue);
         if (pos == -1) {
