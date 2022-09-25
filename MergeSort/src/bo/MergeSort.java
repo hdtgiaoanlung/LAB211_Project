@@ -16,7 +16,7 @@ public class MergeSort {
         this.cloneArr = arr;
     }
 
-    private void merge(int[] arr, int left, int mid, int right) {
+    private void merge(boolean isAsc, int[] arr, int left, int mid, int right) {
         int len1 = mid - left + 1;
         int len2 = right - mid;
 
@@ -33,7 +33,7 @@ public class MergeSort {
         int i = 0, j = 0;
         int k = left;
         while (i < len1 && j < len2) {
-            if (leftArr[i] <= rightArr[j]) {
+            if (isAsc ? leftArr[i] <= rightArr[j] : leftArr[i] >= rightArr[j]) {
                 arr[k] = leftArr[i];
                 i++;
             } else {
@@ -55,18 +55,18 @@ public class MergeSort {
         }
     }
 
-    private void sort(int[] arr, int left, int right) {
+    private void sort(boolean isAsc, int[] arr, int left, int right) {
         if (left < right) {
             int mid = left + (right - left) / 2;
-            sort(arr, left, mid);
-            sort(arr, mid + 1, right);
+            sort(isAsc, arr, left, mid);
+            sort(isAsc, arr, mid + 1, right);
             
-            merge(arr, left, mid, right);
+            merge(isAsc, arr, left, mid, right);
         }
     }
     
-    public int[] getSortedArray(){
-        sort(cloneArr, 0, cloneArr.length - 1);
+    public int[] getSortedArray(boolean isAsc){
+        sort(isAsc, cloneArr, 0, cloneArr.length - 1);
         return cloneArr;
     }
 }
