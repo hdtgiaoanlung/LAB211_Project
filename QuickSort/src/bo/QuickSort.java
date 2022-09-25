@@ -18,7 +18,7 @@ public class QuickSort {
 
     public QuickSort(int[] arr) {
         this.arr = arr;
-        cloneArray = arr;
+        cloneArray = ArrayUtils.cloneArray(arr);
     }
 
     private void sort(int[] arr, boolean isAsc, int startIndex, int endIndex) {
