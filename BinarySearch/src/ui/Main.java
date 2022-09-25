@@ -24,7 +24,7 @@ public class Main {
 
         int pos = bs.getSearchIndex(searchValue);
         System.out.println("Sorted Array: ");
-        System.out.println(bs.sort());
+        ArrayUtils.displayIntArray(bs.getSortedArray());
         if (pos == -1) {
             System.out.println("Not found!");
         } else {
