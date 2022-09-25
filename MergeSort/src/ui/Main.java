@@ -24,6 +24,8 @@ public class Main {
         System.out.println("Original Array: ");
         ArrayUtils.displayIntArray(arr);
         System.out.println("Sorted Array: ");
-        ArrayUtils.displayIntArray(ms.getSortedArray());
+        ArrayUtils.displayIntArray(ms.getSortedArray(true));
+        System.out.println("Descending Array: ");
+        ArrayUtils.displayIntArray(ms.getSortedArray(false));
     }
 }
