@@ -14,11 +14,9 @@ import utils.*;
 public class QuickSort {
 
     private final int[] arr;
-    private int[] cloneArray;
 
     public QuickSort(int[] arr) {
         this.arr = arr;
-        cloneArray = ArrayUtils.cloneArray(arr);
     }
 
     private void sort(int[] arr, boolean isAsc, int startIndex, int endIndex) {
@@ -29,9 +27,13 @@ public class QuickSort {
         }
     }
 
-    public int[] getSortedArray(boolean isAsc) {
-        sort(cloneArray, isAsc, 0, cloneArray.length - 1);
-        return cloneArray;
+    public int[] getSortedArray(boolean sortOnOriginal,boolean isAsc) {
+        int[] array = arr;
+        if(!sortOnOriginal){
+            array = ArrayUtils.cloneArray(arr);
+        }
+        sort(array, isAsc, 0, array.length - 1);
+        return array;
     }
 
     private int partition(int arr[], int startIndex, int endIndex, boolean isAsc) {
