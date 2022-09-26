@@ -22,7 +22,7 @@ public class Main {
         int searchValue = NumberUtils.inputInt("Enter the search value: ");
         BinarySearch bs = new BinarySearch(arr);
 
-        int pos = bs.getSearchIndex(searchValue);
+        int pos = bs.getSearchIndex(false, searchValue);
         System.out.println("Sorted Array: ");
         ArrayUtils.displayIntArray(bs.getSortedArray());
         if (pos == -1) {

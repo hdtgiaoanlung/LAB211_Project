@@ -21,11 +21,7 @@ public class BinarySearch {
         this.arr = arr;
     }
 
-    private int search(boolean searchOnOriginal, int searchValue) {
-        int[] array = arr;
-        if(!searchOnOriginal){
-            array = ArrayUtils.cloneArray(arr);
-        }
+    private int search(int[] array, int searchValue) {
         Arrays.sort(array);
         int low = 0, high = array.length - 1;
         while (low <= high) {
@@ -42,8 +38,12 @@ public class BinarySearch {
         return -1;
     }
 
-    public int getSearchIndex(int searchValue) {
-        return search(false, searchValue);
+    public int getSearchIndex(boolean sortOnOriginal, int searchValue) {
+        int[] array = arr;
+        if(!sortOnOriginal){
+            array = ArrayUtils.cloneArray(arr);
+        }
+        return search(array, searchValue);
     }
     
     public int[] getSortedArray(){
