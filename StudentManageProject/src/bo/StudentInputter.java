@@ -10,5 +10,12 @@ package bo;
  * @author dinht
  */
 public class StudentInputter {
+
+    public StudentInputter() {
+
+    }
     
+    public void inputName(String name){
+        
+    }
 }
