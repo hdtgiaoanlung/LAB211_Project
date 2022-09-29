@@ -6,18 +6,20 @@
 package model;
 
 /**
- *
  * @author dinht
  */
 public class Student {
 
     private String id;
     private String studentName;
-    private String semester;
-    private enum courseName{
+    private int semester;
+
+    private
+    private enum courseName {
         Java, Net, Cpp;
-        public String getCourseName(){
-            switch(this){
+
+        public String getCourseName() {
+            switch (this) {
                 case Java:
                     return "Java";
                 case Net:
@@ -28,13 +30,13 @@ public class Student {
                     throw new AssertionError();
             }
         }
-    };
+    }
 
     public Student() {
 
     }
 
-    public Student(String id, String studentName, String semester) {
+    public Student(String id, String studentName, int semester) {
         this.id = id;
         this.studentName = studentName;
         this.semester = semester;
@@ -49,7 +51,7 @@ public class Student {
         return studentName;
     }
 
-    public String getSemester() {
+    public int getSemester() {
         return semester;
     }
 
@@ -58,11 +60,21 @@ public class Student {
     }
 
     public void setStudentName(String studentName) {
-        this.studentName = studentName;
+        try {
+            this.studentName = studentName;
+            if (studentName.length() == 0) throw new IllegalArgumentException("Name cannot be blank");
+        } catch (Exception e) {
+            System.out.println("Invalid Input");
+        }
     }
 
-    public void setSemester(String semester) {
-        this.semester = semester;
+    public void setSemester(int semester) {
+        try {
+            this.semester = semester;
+            if (semester < 0 || semester > 9) throw new ArithmeticException("Semester must be in range of [1, 9]");
+        } catch (Exception e) {
+            System.out.println("Invalid semester");
+        }
     }
 
 }
