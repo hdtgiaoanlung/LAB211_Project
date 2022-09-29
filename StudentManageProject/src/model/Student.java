@@ -13,7 +13,7 @@ public class Student {
     private String id;
     private String studentName;
     private int semester;
-    
+
     private enum courseName {
         Java, Net, Cpp;
 
