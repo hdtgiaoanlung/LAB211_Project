@@ -25,7 +25,7 @@ public class Main {
         int searchValue = NumberUtils.inputInt("Enter the search value: ");
         LinearSearch ls = new LinearSearch(arr);
         
-        int pos = ls.getSearchIndex(searchValue);
+        int pos = ls.search(searchValue);
         System.out.println("The array: ");
         ArrayUtils.displayIntArray(arr);
         
