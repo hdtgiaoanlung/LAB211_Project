@@ -15,8 +15,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        
+        String menu = """
+                STUDENT MANAGER SYSTEM
+                
+                1. Create new students
+                2. Find and sort students
+                3. Update/Delete
+                4. Report
+                """;
+        System.out.println(menu);
     }
     
 }
