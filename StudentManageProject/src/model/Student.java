@@ -10,7 +10,7 @@ package model;
  */
 public class Student {
 
-    private String id;
+    private int id;
     private String studentName;
     private int semester;
 
@@ -31,18 +31,20 @@ public class Student {
         }
     }
 
+
+
     public Student() {
 
     }
 
-    public Student(String id, String studentName, int semester) {
+    public Student(int id, String studentName, int semester) {
         this.id = id;
         this.studentName = studentName;
         this.semester = semester;
     }
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -54,7 +56,7 @@ public class Student {
         return semester;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
