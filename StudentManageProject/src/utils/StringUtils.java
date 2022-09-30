@@ -5,6 +5,8 @@
  */
 package utils;
 
+import java.util.Scanner;
+
 /**
  *
  * @author dinht
@@ -32,4 +34,17 @@ public class StringUtils {
         return input;
     }
 
+    public static String getStringByRegex(String mess, String error, String regex){
+        Scanner sc = new Scanner(System.in);
+        String output = null;
+        while(true){
+            System.out.println(mess);
+            output = sc.nextLine();
+            if(output.matches(regex)){
+                return output;
+            } else {
+                System.err.println(error);
+            }
+        }
+    }
 }

@@ -28,6 +28,7 @@ public class StudentManager {
     }
 
     public void createStudent(Student s) {
+        s.setId(lastId++);
         studentList.add(s);
     }
 
@@ -41,21 +42,16 @@ public class StudentManager {
         return temp;
     }
 
-    public int searchStudentById(int Id) {
-        for(int i = 0; i < studentList.size(); i++){
-            if(studentList.get(i).getId() == Id){
-                return i;
-            }
-        }
-        return -1;
+    public Student searchStudentById(int Id) {
+        return studentList.get(Id);
     }
 
     public void updateStudent() {
 
     }
 
-    public void removeStudent(int Id) {
-        studentList.remove(Id);
+    public Student removeStudent(int Id) {
+        return studentList.remove(Id);
     }
 
     public void report() {
