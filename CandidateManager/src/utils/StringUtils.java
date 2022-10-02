@@ -65,4 +65,9 @@ public class StringUtils {
         String email = getStringByRegex(mess, "Please enter email with format <account name>@<domain>", regex);
         return email;
     }
+
+    public static boolean pressYNToContinue(String mess){
+        String ret = getStringByRegex(mess, "Y/N only!", "[YNyn]");
+        return ret.equalsIgnoreCase("y");
+    }
 }

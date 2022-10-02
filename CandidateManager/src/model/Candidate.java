@@ -76,4 +76,14 @@ public class Candidate {
     public void setType(CandidateType type) {
         this.type = type;
     }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    @Override
+    public String toString() {
+        String ret = String.format("%-5s | %-20s %-20s | %-4s | %-30s | %-20s | %-100s | %-1s", firstName, lastName, yob + "", Address, phone, email, type.getCandidateType() + "");
+        return ret;
+    }
 }

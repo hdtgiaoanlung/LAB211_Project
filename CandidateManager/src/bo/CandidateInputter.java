@@ -52,7 +52,7 @@ public class CandidateInputter {
         }
         c.setAddress(StringUtils.getNonEmptyString("Enter address: "));
         c.setPhone(StringUtils.getPhone(10, "Enter phone number: "));
-        c.setEmail(StringUtils.getEmail(StringUtils.getEmail("Enter email: ")));
+        c.setEmail(StringUtils.getEmail("Enter email: "));
     }
 
     public void inputFresherInformation() {
