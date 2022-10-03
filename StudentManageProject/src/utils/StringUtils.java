@@ -47,4 +47,14 @@ public class StringUtils {
             }
         }
     }
+    public static int getInt(String mess, String formatErrorString, String outOfRange, int min, int max){
+        while(true){
+            int ret = Integer.parseInt(getStringByRegex(mess, formatErrorString, "[0-9]+"));
+            if(ret < min || ret > max){
+                System.err.println(outOfRange);
+            } else {
+                return ret;
+            }
+        }
+    }
 }

@@ -5,17 +5,22 @@
  */
 package bo;
 
+import model.Student;
+import utils.StringUtils;
+
 /**
- *
  * @author dinht
  */
 public class StudentInputter {
 
+    private Student s;
     public StudentInputter() {
 
     }
-    
-    public void inputName(String name){
-        
+
+    public void inputInformation() {
+        s.setStudentName(StringUtils.getStringByRegex("Enter student name: ", "Characters only!", "[A-Za-z ]+"));
+        s.setSemester(StringUtils.getInt("Enter semester: ", "Input number only!", "Input must in range of [1; 50]", 1, 50));
+
     }
 }

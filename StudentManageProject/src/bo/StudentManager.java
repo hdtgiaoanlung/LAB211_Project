@@ -27,8 +27,12 @@ public class StudentManager {
         lastId = 0;
     }
 
+    public StudentManager(ArrayList<Student> listStudent) {
+        this.studentList = listStudent;
+    }
+
     public void createStudent(Student s) {
-        s.setId(lastId++);
+        s.setId(++lastId);
         studentList.add(s);
     }
 
@@ -42,8 +46,13 @@ public class StudentManager {
         return temp;
     }
 
-    public Student searchStudentById(int Id) {
-        return studentList.get(Id);
+    public int searchStudentById(int Id) throws Exception{
+        for(int i = 0; i <studentList.size(); i++){
+            if(studentList.get(i).getId() == Id){
+                return i;
+            }
+        }
+        throw new Exception("Id not found!");
     }
 
     public void updateStudent() {
@@ -51,7 +60,7 @@ public class StudentManager {
     }
 
     public Student removeStudent(int Id) {
-        return studentList.remove(Id);
+
     }
 
     public void report() {
