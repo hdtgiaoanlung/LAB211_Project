@@ -5,10 +5,19 @@
  */
 package controller;
 
+import bo.StudentInputter;
+import bo.StudentManager;
+
 /**
- *
  * @author dinht
  */
 public class StudentController {
-    
+    StudentManager sm;
+    StudentInputter si;
+
+    public StudentController(){
+        sm = new StudentManager();
+    }
+
+
 }

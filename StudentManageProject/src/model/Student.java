@@ -14,36 +14,29 @@ public class Student {
     private String studentName;
     private int semester;
 
-    private enum courseName {
-        Java, Net, Cpp;
+    private model.courseName courseName;
 
-        public String getCourseName() {
-            switch (this) {
-                case Java:
-                    return "Java";
-                case Net:
-                    return ".Net";
-                case Cpp:
-                    return "C/C++";
-                default:
-                    throw new AssertionError();
-            }
-        }
+    private int totalCourse;
+
+    public int getTotalCourse() {
+        return totalCourse;
     }
 
+    public void setTotalCourse(int totalCourse) {
+        this.totalCourse = totalCourse;
+    }
 
+    public model.courseName getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(model.courseName courseName) {
+        this.courseName = courseName;
+    }
 
     public Student() {
-
+        totalCourse = 0;
     }
-
-    public Student(int id, String studentName, int semester) {
-        this.id = id;
-        this.studentName = studentName;
-        this.semester = semester;
-    }
-
-
     public int getId() {
         return id;
     }

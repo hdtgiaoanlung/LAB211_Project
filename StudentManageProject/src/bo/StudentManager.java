@@ -6,13 +6,9 @@
 package bo;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 
 import model.Student;
-
-import static java.util.Objects.compare;
+import utils.StringUtils;
 
 /**
  * @author dinht
@@ -37,34 +33,51 @@ public class StudentManager {
     }
 
     public ArrayList<Student> searchStudentByName(String name) {
-        ArrayList<Student> temp = new ArrayList<>();
+        ArrayList<Student> ret = new ArrayList<>();
         for (int i = 0; i < studentList.size(); i++) {
             if (studentList.get(i).getStudentName() == name) {
-                temp.add(studentList.get(i));
+                ret.add(studentList.get(i));
             }
         }
-        return temp;
+        return ret;
     }
 
-    public int searchStudentById(int Id) throws Exception{
-        for(int i = 0; i <studentList.size(); i++){
-            if(studentList.get(i).getId() == Id){
+    public int searchStudentById(int Id) throws Exception {
+        for (int i = 0; i < studentList.size(); i++) {
+            if (studentList.get(i).getId() == Id) {
                 return i;
             }
         }
         throw new Exception("Id not found!");
     }
 
-    public void updateStudent() {
-
+    public Student updateStudent(int Id, Student s) throws Exception {
+        int index = searchStudentById(Id);
+        if (index != -1) {
+            return studentList.set(index, s);
+        }
+        throw new Exception("Student not found!");
     }
 
-    public Student removeStudent(int Id) {
+    public Student removeStudent(int Id) throws Exception {
+        int index = searchStudentById(Id);
+        if (index != -1) {
+            return studentList.remove(index);
+        }
+        throw new Exception("Student not found!");
+    }
 
+    @Override
+    public String toString() {
+        String ret = "";
+        for (Student s : studentList) {
+            ret += StringUtils.normalFormName(s.getStudentName()) + " | " + s.getCourseName() + " | " + s.getTotalCourse() + "\n";
+        }
+        return ret;
     }
 
     public void report() {
-
+        toString();
     }
 
 }
