@@ -66,4 +66,14 @@ public class StudentController {
             }
         }
     }
+
+    private boolean chooseUpdateDelete(){
+        String choice = StringUtils.getStringByRegex("Update or Delete (U/D)", "Enter U/D only", "[UDud]");
+        return choice.equalsIgnoreCase("u");
+    }
+
+    public void updateAndDelete(){
+        boolean choice = chooseUpdateDelete();
+        
+    }
 }
