@@ -16,14 +16,13 @@ public enum courseName {
         }
     }
 
-    public static courseName stringToCourseName(String type){
-        type = type.toLowerCase();
+    public static courseName intToCourseName(int type){
         switch (type){
-            case "java":
+            case 1:
                 return Java;
-            case ".net":
+            case 2:
                 return Net;
-            case "c/c++":
+            case 3:
                 return Cpp;
             default:
                 throw new AssertionError();

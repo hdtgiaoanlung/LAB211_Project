@@ -27,7 +27,7 @@ public class StudentManager {
         this.studentList = listStudent;
     }
 
-    public void createStudent(Student s) {
+    public void addStudent(Student s) {
         s.setId(++lastId);
         studentList.add(s);
     }
@@ -35,7 +35,7 @@ public class StudentManager {
     public ArrayList<Student> searchStudentByName(String name) {
         ArrayList<Student> ret = new ArrayList<>();
         for (int i = 0; i < studentList.size(); i++) {
-            if (studentList.get(i).getStudentName() == name) {
+            if (StringUtils.removeAllBlank(studentList.get(i).getStudentName()).contains(StringUtils.removeAllBlank(name))) {
                 ret.add(studentList.get(i));
             }
         }
@@ -59,7 +59,7 @@ public class StudentManager {
         throw new Exception("Student not found!");
     }
 
-    public Student removeStudent(int Id) throws Exception {
+    public Student removeStudentById(int Id) throws Exception {
         int index = searchStudentById(Id);
         if (index != -1) {
             return studentList.remove(index);
@@ -74,10 +74,6 @@ public class StudentManager {
             ret += StringUtils.normalFormName(s.getStudentName()) + " | " + s.getCourseName() + " | " + s.getTotalCourse() + "\n";
         }
         return ret;
-    }
-
-    public void report() {
-        toString();
     }
 
 }

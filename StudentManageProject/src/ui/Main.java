@@ -25,14 +25,26 @@ public class Main {
                 + "4. Report\n"
                 + "5. Exit\n"
                 + "(Please choose 1 to Create, 2 to Find and Sort, 3 to Update/Delete, 4 to Report and 5 to Exit program)\n\n";
-        System.out.println(menu);
-//        while (true) {
-//            int choice = StringUtils.getInt("Enter your choice: ", "Input number only!", "Input must be in range of [1, 5]", 1, 5);
-//            switch (choice) {
-//                case 1:
-//
-//            }
-//        }
+
+        do {
+            System.out.println(menu);
+            int choice = StringUtils.getInt("Enter your choice: ", "Input number only!", "Input must be in range of [1, 5]", 1, 5);
+            switch (choice) {
+                case 1:
+                    sc.addStudentByNumber(StringUtils.getInt("Enter number of student: ", "Enter number only!", "Input must be in range of [10, 500]", 10, 500));
+                    break;
+                case 2:
+                    sc.findAndSortStudent();
+                    break;
+                case 3:
+                    
+                case 4:
+                    sc.displayAllStudent();
+                    break;
+                default:
+                    return;
+            }
+        } while (StringUtils.pressYNToContinue());
 
     }
 

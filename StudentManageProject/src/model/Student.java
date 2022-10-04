@@ -54,21 +54,11 @@ public class Student {
     }
 
     public void setStudentName(String studentName) {
-        try {
-            this.studentName = studentName;
-            if (studentName.length() == 0) throw new IllegalArgumentException("Name cannot be blank");
-        } catch (Exception e) {
-            System.out.println("Invalid Input");
-        }
+        this.studentName = studentName;
     }
 
     public void setSemester(int semester) {
-        try {
-            this.semester = semester;
-            if (semester < 0 || semester > 9) throw new ArithmeticException("Semester must be in range of [1, 9]");
-        } catch (Exception e) {
-            System.out.println("Invalid semester");
-        }
+        this.semester = semester;
     }
 
 }

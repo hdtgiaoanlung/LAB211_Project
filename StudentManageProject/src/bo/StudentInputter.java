@@ -16,12 +16,16 @@ public class StudentInputter {
 
     private Student s;
     public StudentInputter() {
-
+        s = new Student();
     }
 
     public void inputInformation() {
         s.setStudentName(StringUtils.getStringByRegex("Enter student name: ", "Characters only!", "[A-Za-z ]+"));
         s.setSemester(StringUtils.getInt("Enter semester: ", "Input number only!", "Input must in range of [1; 50]", 1, 50));
-        s.setCourseName(courseName.stringToCourseName(StringUtils.getStringByRegex("Enter course name: ", "Only input Java/Net/Cpp", "Java|Net|Cpp|java|net|cpp")));
+        s.setCourseName(courseName.intToCourseName(StringUtils.getInt("Enter course name: (1: Java; 2:.Net; 3: C/C++)", "Input number only", "Input must be in range of [1, 3]", 1, 3)));
+    }
+
+    public Student getStudent(){
+        return s;
     }
 }
