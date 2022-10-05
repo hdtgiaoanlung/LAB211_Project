@@ -24,7 +24,7 @@ public class Main {
                 + "3. Update/Delete\n"
                 + "4. Report\n"
                 + "5. Exit\n"
-                + "(Please choose 1 to Create, 2 to Find and Sort, 3 to Update/Delete, 4 to Report and 5 to Exit program)\n\n";
+                + "(Please choose 1 to Create, 2 to Find and Sort, 3 to Update/Delete, 4 to Report and 5 to Exit program)";
 
         do {
             System.out.println(menu);

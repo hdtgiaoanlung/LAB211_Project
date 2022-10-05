@@ -47,6 +47,10 @@ public class StudentManager {
         return false;
     }
 
+    private void checkExist(Student s){
+
+    }
+
     public ArrayList<Student> searchStudentByName(String name) {
         ArrayList<Student> ret = new ArrayList<>();
         for (int i = 0; i < studentList.size(); i++) {
@@ -86,9 +90,13 @@ public class StudentManager {
     public String toString() {
         String ret = "";
         for (Student s : studentList) {
-            ret += StringUtils.normalFormName(s.getId() + " | " +s.getStudentName()) + " | " + s.getCourseName() + " | " + s.getTotalCourse() + "\n";
+            ret += s.getId() + " | " + StringUtils.normalFormName(s.getStudentName()) + " | " + s.getCourseName() + " | " + s.getTotalCourse() + "\n";
         }
         return ret;
+    }
+
+    public ArrayList<Student> getStudentList(){
+        return studentList;
     }
 
 }

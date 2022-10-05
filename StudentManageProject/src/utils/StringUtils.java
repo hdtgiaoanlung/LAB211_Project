@@ -76,4 +76,9 @@ public class StringUtils {
         String ret = getStringByRegex("Do you want to continue? (Y/N) ", "Input Y/N only!", "[YNyn]");
         return ret.equalsIgnoreCase("y");
     }
+
+    public static boolean chooseUpdateDelete(){
+        String choice = StringUtils.getStringByRegex("Update or Delete (U/D)", "Enter U/D only", "[UDud]");
+        return choice.equalsIgnoreCase("u");
+    }
 }

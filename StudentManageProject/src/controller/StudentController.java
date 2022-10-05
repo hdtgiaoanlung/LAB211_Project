@@ -62,23 +62,21 @@ public class StudentController {
             });
             System.out.println("The found student list: ");
             for(Student s : ret){
-                System.out.println(s.getStudentName());
+                System.out.println(StringUtils.normalFormName(s.getStudentName()));
             }
         }
     }
 
-
-
-
-    private boolean chooseUpdateDelete(){
-        String choice = StringUtils.getStringByRegex("Update or Delete (U/D)", "Enter U/D only", "[UDud]");
-        return choice.equalsIgnoreCase("u");
-    }
-
-    public void updateAndDelete(){
-        boolean choice = chooseUpdateDelete();
-        if(choice){
-            studentInputter.inputInformation();
+    public void updateAndDelete() {
+        int id = StringUtils.getInt("Enter Student Id: ", "Input number only", "Input must be in range of [1, " + studentManager.getStudentList().size() + "]", 1, studentManager.getStudentList().size());
+        int index = studentManager.searchStudentById(id);
+        if(index != -1 ){
+            boolean choice = StringUtils.chooseUpdateDelete();
+            if(choice){
+                Student s = studentInputter.inputInformation();
+                studentManager.updateStudent(index, s);
+            }
         }
+
     }
 }
