@@ -15,6 +15,7 @@ import utils.StringUtils;
 public class StudentInputter {
 
     private Student s;
+
     public StudentInputter() {
         s = new Student();
     }
@@ -25,7 +26,8 @@ public class StudentInputter {
         s.setCourseName(courseName.intToCourseName(StringUtils.getInt("Enter course name: (1: Java; 2:.Net; 3: C/C++)", "Input number only", "Input must be in range of [1, 3]", 1, 3)));
     }
 
-    public Student getStudent(){
+
+    public Student getStudent() {
         return s;
     }
 }

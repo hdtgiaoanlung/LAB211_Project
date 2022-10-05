@@ -62,10 +62,13 @@ public class StudentController {
             });
             System.out.println("The found student list: ");
             for(Student s : ret){
-                System.out.println(s.toString());
+                System.out.println(s.getStudentName());
             }
         }
     }
+
+
+
 
     private boolean chooseUpdateDelete(){
         String choice = StringUtils.getStringByRegex("Update or Delete (U/D)", "Enter U/D only", "[UDud]");
@@ -74,6 +77,8 @@ public class StudentController {
 
     public void updateAndDelete(){
         boolean choice = chooseUpdateDelete();
-        
+        if(choice){
+            studentInputter.inputInformation();
+        }
     }
 }

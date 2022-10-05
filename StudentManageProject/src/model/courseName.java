@@ -28,4 +28,5 @@ public enum courseName {
                 throw new AssertionError();
         }
     }
+
 }

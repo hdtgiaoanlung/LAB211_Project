@@ -37,7 +37,7 @@ public class Main {
                     sc.findAndSortStudent();
                     break;
                 case 3:
-                    
+                    sc.updateAndDelete();
                 case 4:
                     sc.displayAllStudent();
                     break;

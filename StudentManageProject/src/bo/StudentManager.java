@@ -8,6 +8,7 @@ package bo;
 import java.util.ArrayList;
 
 import model.Student;
+import model.courseName;
 import utils.StringUtils;
 
 /**
@@ -27,9 +28,23 @@ public class StudentManager {
         this.studentList = listStudent;
     }
 
+
     public void addStudent(Student s) {
         s.setId(++lastId);
         studentList.add(s);
+    }
+
+    private boolean checkExist(String name, int type){
+        for(Student s : studentList){
+            if(StringUtils.removeAllBlank(s.getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(name))){
+                if(courseName.intToCourseName(type) == s.getCourseName()){
+                    return true;
+                } else {
+                    s.setTotalCourse(s.getTotalCourse() + 1);
+                }
+            }
+        }
+        return false;
     }
 
     public ArrayList<Student> searchStudentByName(String name) {
@@ -71,7 +86,7 @@ public class StudentManager {
     public String toString() {
         String ret = "";
         for (Student s : studentList) {
-            ret += StringUtils.normalFormName(s.getStudentName()) + " | " + s.getCourseName() + " | " + s.getTotalCourse() + "\n";
+            ret += StringUtils.normalFormName(s.getId() + " | " +s.getStudentName()) + " | " + s.getCourseName() + " | " + s.getTotalCourse() + "\n";
         }
         return ret;
     }
