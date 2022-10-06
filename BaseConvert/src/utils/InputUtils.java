@@ -27,4 +27,9 @@ public class InputUtils {
             }
         }
     }
+
+    public static boolean pressYNToContinue(){
+        String ret = getStringByRegex("Do you want to continue (Y/N)?", "Input Y/N only!", "[YNyn]");
+        return ret.equalsIgnoreCase("y");
+    }
 }
