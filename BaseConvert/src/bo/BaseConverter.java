@@ -7,7 +7,7 @@ public class BaseConverter {
 
     public String decToBin(int number) {
         while (number != 0) {
-            
+
         }
     }
 }
