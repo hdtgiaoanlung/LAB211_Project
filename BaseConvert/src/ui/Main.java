@@ -1,7 +1,16 @@
 package ui;
 
+import bo.BaseConverter;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        BaseConverter baseConverter;
+
+
+        String menu = "WELCOME TO BASE CONVERT SYSTEM\n"
+                + "1. Binary\n"
+                + "2. Decimal\n"
+                + "3. Hexadecimal\n";
+
     }
 }
