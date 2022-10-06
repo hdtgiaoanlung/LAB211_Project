@@ -6,8 +6,13 @@ public class BaseConverter {
     }
 
     public String decToBin(int number) {
-        while (number != 0) {
-
+        String ret = "";
+        int cloneNumber = number;
+        while (cloneNumber != 0) {
+            int remainder = cloneNumber % 2;
+            cloneNumber = cloneNumber / 2;
+            ret += remainder + "";
         }
+        return ret;
     }
 }
