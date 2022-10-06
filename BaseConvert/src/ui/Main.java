@@ -2,12 +2,12 @@ package ui;
 
 import bo.BaseConverter;
 import bo.BaseInputter;
+import controller.BaseConvertController;
 import utils.InputUtils;
 
 public class Main {
     public static void main(String[] args) {
-        BaseConverter baseConverter;
-        BaseInputter baseInputter;
+        BaseConvertController baseConvertController;
 
         String menu = "WELCOME TO BASE CONVERT SYSTEM\n"
                 + "1. Binary\n"

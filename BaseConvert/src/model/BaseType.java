@@ -1,6 +1,6 @@
 package model;
 
-public enum Base {
+public enum BaseType {
     Hex, Dec, Bin;
     public int baseToInt(){
         switch (this){
