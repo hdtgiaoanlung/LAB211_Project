@@ -1,7 +1,6 @@
 package bo;
 
 import entity.BaseType;
-import jdk.internal.util.xml.impl.Input;
 import utils.InputUtils;
 
 import java.util.HashMap;
@@ -61,4 +60,5 @@ public class BaseConverter {
     public String binToHex(String input) {
         return decToHex(binToDec(input));
     }
+
 }
