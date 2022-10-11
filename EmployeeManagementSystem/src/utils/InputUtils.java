@@ -27,19 +27,19 @@ public class InputUtils {
         }
     }
 
-    public static String getEmail(String mess){
+    public static String getEmail(String mess) {
         String regex = "^[A-Za-z](.*)([@]{1})(.{2,})(\\.)(.{2,})";
         String email = getStringByRegex(mess, "Please enter email with format <account name>@<domain>", regex);
         return email;
     }
 
-    public static String getGender(String mess){
+    public static String getGender(String mess) {
         String regex = "male|female|Male|Female";
         String gender = getStringByRegex(mess, "Please enter valid gender!", regex);
         return gender;
     }
 
-    public static boolean pressYNToContinue(){
+    public static boolean pressYNToContinue() {
         String ret = getStringByRegex("Do you want to continue? (Y/N)", "Input Y/N only!", "[YNyn]");
         return ret.equalsIgnoreCase("y");
     }
@@ -47,7 +47,6 @@ public class InputUtils {
     public static String removeUnnecessaryBlank(String input) {
         return input.trim().replaceAll("\\s+", " ");
     }
-
 
 
     public static String normalFormName(String input) {

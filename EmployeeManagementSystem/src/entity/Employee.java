@@ -98,6 +98,7 @@ public class Employee {
     public void setAgency(String agency) {
         this.agency = agency;
     }
+
     public String toString() {
         String ret = String.format("%-5s | %-20s | %-20s | %-10s | %-4s | %-20s | %-30s | %-100s | %-100s | %-10s", id + "", InputUtils.normalFormName(firstName), InputUtils.normalFormName(lastName), sex, dob + "", phone, email, address, agency, salary + "");
         return ret;

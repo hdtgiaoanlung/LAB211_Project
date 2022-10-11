@@ -30,7 +30,7 @@ public class EmployeeController {
                 int id = InputUtils.getInt("Enter Id of update student: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
                 employeeInput = new EmployeeInput();
                 int index = employeeManager.checkExist(id);
-                if(index == -1) {
+                if (index == -1) {
                     System.out.println("Id not found!");
                 } else {
                     employeeManager.updateEmployee(index, employeeInput.inputInformation());

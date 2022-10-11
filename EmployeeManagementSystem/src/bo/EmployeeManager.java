@@ -67,7 +67,7 @@ public class EmployeeManager {
     @Override
     public String toString() {
         String ret = "";
-        for ( Employee e : empList) {
+        for (Employee e : empList) {
             ret += e.toString();
         }
         return ret;
