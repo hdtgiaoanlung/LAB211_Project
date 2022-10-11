@@ -1,7 +1,5 @@
 package utils;
 
-import com.sun.tools.jdeprscan.scan.Scan;
-
 import java.util.Scanner;
 
 public class InputUtils {
@@ -12,6 +10,7 @@ public class InputUtils {
     public static String getStringByRegex(String mess, String formatError, String regex) {
         Scanner sc = new Scanner(System.in);
         while (true) {
+            System.out.print(mess);
             String input = sc.nextLine();
             if (input.matches(regex)) {
                 return input;
@@ -23,7 +22,7 @@ public class InputUtils {
 
     public static int getInt(String mess, String formatError, String outOfRangeError, int min , int max){
         while (true) {
-            int ret = Integer.parseInt(getStringByRegex(mess, "Input number only!", "[0-9 +]"));
+            int ret = Integer.parseInt(getStringByRegex(mess, formatError, "[0-9 +]"));
             if (ret < min || ret > max) {
                 System.err.println(outOfRangeError);
             } else {

@@ -39,5 +39,42 @@ public class InputUtils {
         return gender;
     }
 
-    public static String
+    public static boolean pressYNToContinue(){
+        String ret = getStringByRegex("Do you want to continue? (Y/N)", "Input Y/N only!", "[YNyn]");
+        return ret.equalsIgnoreCase("y");
+    }
+
+    public static String removeUnnecessaryBlank(String input) {
+        return input.trim().replaceAll("\\s+", " ");
+    }
+
+
+
+    public static String normalFormName(String input) {
+        input = removeUnnecessaryBlank(input);
+        String temp[] = input.split(" ");
+        input = "";
+        for (int i = 0; i < temp.length; i++) {
+            input += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1);
+            if (i < temp.length - 1) {
+                input += " ";
+            }
+        }
+        return input;
+    }
+
+    public static String getNonEmptyString(String mess) {
+        Scanner sc = new Scanner(System.in);
+        String ret = "";
+        while (true) {
+            System.out.print(mess);
+            ret = sc.nextLine();
+            if (ret.equalsIgnoreCase("")) {
+                System.err.println("Please input a non-empty String!!!");
+                continue;
+            } else {
+                return ret;
+            }
+        }
+    }
 }

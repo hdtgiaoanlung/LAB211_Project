@@ -2,28 +2,24 @@ package controller;
 
 import bo.BaseConverter;
 import bo.NumberInputer;
+import entity.BaseType;
+
+import java.util.ArrayList;
 
 public class BaseConverterController {
 
     private BaseConverter baseConverter;
     private NumberInputer numberInputer;
 
-    private Number number;
-
-    public BaseConverterController(){
+    public BaseConverterController() {
         numberInputer = new NumberInputer();
     }
 
-    public void convertByChoice(int baseChoice, int convertChoice) {
-        if(baseChoice == convertChoice) {
-            System.err.println("Please input another base type!");
-        } else {
-            switch (convertChoice) {
-                case 1:
-
-            }
-        }
+    public String generateNumberByChoice(int choice) {
+        return numberInputer.inputNumberByChoice(choice);
     }
 
+    public String convertByChoice(String input, ){
 
+    }
 }

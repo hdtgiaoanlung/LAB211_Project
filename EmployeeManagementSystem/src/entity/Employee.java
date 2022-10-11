@@ -1,5 +1,7 @@
 package entity;
 
+import utils.InputUtils;
+
 public class Employee {
 
     private int id;
@@ -10,7 +12,7 @@ public class Employee {
     private String address;
     private int dob;
     private String sex;
-    private float salary;
+    private int salary;
     private String agency;
 
     public Employee() {
@@ -49,7 +51,7 @@ public class Employee {
         return sex;
     }
 
-    public float getSalary() {
+    public int getSalary() {
         return salary;
     }
 
@@ -89,11 +91,15 @@ public class Employee {
         this.sex = sex;
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
     public void setAgency(String agency) {
         this.agency = agency;
+    }
+    public String toString() {
+        String ret = String.format("%-5s | %-20s | %-20s | %-10s | %-4s | %-20s | %-30s | %-100s | %-100s | %-10s", id + "", InputUtils.normalFormName(firstName), InputUtils.normalFormName(lastName), sex, dob + "", phone, email, address, agency, salary + "");
+        return ret;
     }
 }

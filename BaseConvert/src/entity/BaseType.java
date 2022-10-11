@@ -14,4 +14,5 @@ public enum BaseType {
                 throw new AssertionError();
         }
     }
+
 }

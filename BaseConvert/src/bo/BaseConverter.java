@@ -10,7 +10,6 @@ public class BaseConverter {
     private static String bitString = "0123456789ABCDEF";
 
     public BaseConverter() {
-
     }
 
     private String decToBase(String input, BaseType type) {
@@ -37,28 +36,59 @@ public class BaseConverter {
         return ret + "";
     }
 
-    public String binToDec(String input) {
+    private String binToDec(String input) {
         return baseToDec(input, BaseType.Bin);
     }
 
-    public String hexToDec(String input) {
+    private String hexToDec(String input) {
         return baseToDec(input, BaseType.Hex);
     }
 
-    public String decToBin(String input) {
+    private String decToBin(String input) {
         return decToBase(input, BaseType.Bin);
     }
 
-    public String decToHex(String input) {
+    private String decToHex(String input) {
         return decToBase(input, BaseType.Hex);
     }
 
-    public String hexToBin(String input){
+    private String hexToBin(String input){
         return decToBin(hexToDec(input));
     }
 
-    public String binToHex(String input) {
+    private String binToHex(String input) {
         return decToHex(binToDec(input));
     }
+
+    private BaseType getConvertBaseByChoice(int choice) {
+        switch (choice) {
+            case 1:
+                return BaseType.Bin;
+            case 2:
+                return BaseType.Dec;
+            case 3:
+                return BaseType.Hex;
+            default:
+                throw new AssertionError();
+        }
+    }
+
+    public String convertNumberByChoice(String input, int originalChoice, int choice) {
+//        BaseType type = getConvertBaseByChoice(originalChoice);
+//        BaseType convertBase = getConvertBaseByChoice(choice);
+//        if (type == convertBase) {
+//            return InputUtils.removeAllBlank(input);
+//        } else if (type == BaseType.Dec) {
+//            return InputUtils.removeAllBlank(decToBase(input, convertBase));
+//        } else if (convertBase == BaseType.Dec) {
+//            return InputUtils.removeAllBlank(baseToDec(input, type));
+//        } else if (convertBase == BaseType.Bin) {
+//            return InputUtils.removeAllBlank(hexToBin(input));
+//        } else {
+//            return InputUtils.removeAllBlank(binToHex(input));
+//        }
+
+    }
+
 
 }
