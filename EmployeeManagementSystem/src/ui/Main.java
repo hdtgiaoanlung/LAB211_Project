@@ -17,6 +17,9 @@ public class Main {
             System.out.println(menu);
             int choice = InputUtils.getInt("Enter your choice: ", "Input number only!", "Input must be in range of [1, 6]", 1, 6);
             employeeController.execByChoice(choice);
+            if(choice == 6) {
+                return;
+            }
         } while (InputUtils.pressYNToContinue());
     }
 }

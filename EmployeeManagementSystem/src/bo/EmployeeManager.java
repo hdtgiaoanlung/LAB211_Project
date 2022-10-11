@@ -17,7 +17,7 @@ public class EmployeeManager {
         if (checkExist(e.getId()) == -1) {
             empList.add(e);
         } else {
-            System.err.println("The id already exists!");
+            System.out.println("The id already exists!");
         }
     }
 
