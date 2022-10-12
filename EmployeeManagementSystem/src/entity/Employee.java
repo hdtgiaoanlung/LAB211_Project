@@ -100,7 +100,7 @@ public class Employee {
     }
 
     public String toString() {
-        String ret = String.format("%-5s | %-20s | %-20s | %-10s | %-4s | %-20s | %-30s | %-100s | %-100s | %-10s \n", id + "", InputUtils.normalFormName(firstName), InputUtils.normalFormName(lastName), sex, dob + "", phone, email, address, agency, salary + "");
+        String ret = String.format("%-5s | %-20s | %-20s | %-10s | %-4s | %-20s | %-30s | %-50s | %-50s | %-10s \n", id + "", InputUtils.normalFormName(firstName), InputUtils.normalFormName(lastName), sex, dob + "", phone, email, address, agency, salary + "");
         return ret;
     }
 }
