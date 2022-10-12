@@ -51,4 +51,8 @@ public class NumberInputer {
             }
         } while (true);
     }
+
+    public BaseType inputOriginalBase(){
+        return getBaseByChoice("Enter original base: ", null);
+    }
 }

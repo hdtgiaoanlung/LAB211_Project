@@ -2,13 +2,13 @@ package ui;
 
 import bo.BaseConverter;
 import bo.NumberInputer;
+import controller.BaseConverterController;
 import entity.BaseType;
 import utils.InputUtils;
 
 public class Main {
     public static void main(String[] args) {
-        BaseConverter baseConverter = new BaseConverter();
-        NumberInputer numberInputer = new NumberInputer();
+        BaseConverterController controller = new BaseConverterController();
         String menu = "WELCOME TO BASE CONVERTER\n" +
                 "1. Binary\n" +
                 "2. Decimal\n" +
@@ -16,12 +16,8 @@ public class Main {
                 "4. Exit\n";
         do {
             System.out.println(menu);
-            String numString = "";
-            BaseType originalBase = numberInputer.getBaseByChoice("Enter original base: ", null);
-            BaseType convertBase = numberInputer.getBaseByChoice("Enter base of converted number: ", originalBase);
-            numString = numberInputer.inputNumberByChoice(originalBase);
-            String convertedString = baseConverter.convertNumberByChoice(numString, originalBase, convertBase);
-            System.out.println("Converted number: " + convertedString);
+            String output = controller.control();
+            System.out.println("Converted String: " + output);
         } while(InputUtils.pressYNToContinue());
     }
 }
