@@ -7,8 +7,8 @@ package controller;
 
 import bo.StudentInputter;
 import bo.StudentManager;
-import model.Student;
 import utils.StringUtils;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,7 +55,7 @@ public class StudentController {
     }
 
     public Student updateStudent(int id) throws Exception{
-        return studentManager.updateStudent(id, addNewStudent());
+        return studentManager.updateStudent(id, studentInputter.inputInformation());
     }
 
     public Student deleteStudent(int id) throws Exception {
@@ -64,7 +64,7 @@ public class StudentController {
     }
 
     public Student updateAndDeleteStudent() throws Exception{
-        int id = StringUtils.getInt("Enter student ID to update: ", "Input number only!", "Input must be in range", 1, studentManager.getStudentList().size());
+        int id = StringUtils.getInt("Enter student ID to update: ", "Input number only!", "Input must be in range", 1, Integer.MAX_VALUE);
         if (StringUtils.chooseUpdateDelete()) {
             return updateStudent(id);
         } else {

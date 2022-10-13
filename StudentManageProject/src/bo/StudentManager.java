@@ -5,10 +5,10 @@
  */
 package bo;
 
+
 import java.util.ArrayList;
 
 import model.Student;
-import model.courseName;
 import utils.StringUtils;
 
 /**
@@ -35,12 +35,10 @@ public class StudentManager {
             if (StringUtils.removeAllBlank(s.getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(e.getStudentName()))
                     && s.getSemester() == e.getSemester()
                     && s.getId() == e.getId()) {
-                if (s.getCourseName().equals(e.getCourseName())) {
-                    return false;
-                } else {
+                if (!s.getCourseName().equals(e.getCourseName())) {
                     e.setTotalCourse(e.getTotalCourse() + 1);
-                    return false;
                 }
+                return false;
             }
         }
         return true;
@@ -64,7 +62,7 @@ public class StudentManager {
         return ret;
     }
 
-    public int searchStudentById(int Id) throws Exception{
+    public int searchStudentById(int Id) throws Exception {
         for (int i = 0; i < studentList.size(); i++) {
             if (studentList.get(i).getId() == Id) {
                 return i;
@@ -73,17 +71,12 @@ public class StudentManager {
         throw new Exception("ID not found!");
     }
 
-    public Student updateStudent(int Id, Student s) throws Exception{
-        int index = searchStudentById(Id);
+    public Student updateStudent(int index, Student s){
         return studentList.set(index, s);
     }
 
-    public Student removeStudentById(int Id) throws Exception {
-        int index = searchStudentById(Id);
-        if (index != -1) {
-            return studentList.remove(index);
-        }
-        throw new Exception("Student not found!");
+    public Student removeStudentById(int index){
+        return studentList.remove(index);
     }
 
     @Override

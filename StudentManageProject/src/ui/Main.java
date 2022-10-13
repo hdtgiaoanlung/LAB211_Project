@@ -29,24 +29,28 @@ public class Main {
         do {
             System.out.println(menu);
             int choice = StringUtils.getInt("Enter your choice: ", "Input number only!", "Input must be in range of [1, 5]", 1, 5);
-            switch (choice) {
-                case 1:
-                    controller.addNewStudent();
-                    break;
-                case 2:
-                    String searchName = StringUtils.getStringByRegex("Enter search name: ", "Input character only!", "[A-Za-z ]+");
-                    controller.findAndSortStudent(searchName);
-                    break;
-                case 3:
-                    controller.updateAndDeleteStudent();
-                    break;
-                case 4:
-                    controller.displayAllStudent();
-                    break;
-                case 5:
-                    return;
-                default:
-                    throw new AssertionError();
+            try {
+                switch (choice) {
+                    case 1:
+                        controller.addNewStudent();
+                        break;
+                    case 2:
+                        String searchName = StringUtils.getStringByRegex("Enter search name: ", "Input character only!", "[A-Za-z ]+");
+                        controller.findAndSortStudent(searchName);
+                        break;
+                    case 3:
+                        controller.updateAndDeleteStudent();
+                        break;
+                    case 4:
+                        controller.displayAllStudent();
+                        break;
+                    case 5:
+                        return;
+                    default:
+                        throw new AssertionError();
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         } while (StringUtils.pressYNToContinue());
 
