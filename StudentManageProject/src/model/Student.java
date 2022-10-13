@@ -1,33 +1,19 @@
 package model;
 
+import java.util.ArrayList;
+import model.courseName;
+import utils.StringUtils;
+
 public class Student {
 
     private int id;
     private String studentName;
     private int semester;
 
-    private model.courseName courseName;
-
-    private int totalCourse;
-
-    public int getTotalCourse() {
-        return totalCourse;
-    }
-
-    public void setTotalCourse(int totalCourse) {
-        this.totalCourse = totalCourse;
-    }
-
-    public model.courseName getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(model.courseName courseName) {
-        this.courseName = courseName;
-    }
+    private ArrayList<courseName> courseList;
 
     public Student() {
-        totalCourse = 0;
+        courseList = new ArrayList<>();
     }
 
     public int getId() {
@@ -56,6 +42,18 @@ public class Student {
 
     @Override
     public String toString() {
-        return id + " | " + studentName + " | " + courseName + " | " + totalCourse;
+        return id + " | " + StringUtils.normalFormName(studentName) + " | " + semester + " | " + courseList.get(0).getCourseName() + " | " + courseList.size();
+    }
+
+    public ArrayList<courseName> getCourseList() {
+        return courseList;
+    }
+
+    public void updateCourseList(courseName name) throws Exception{
+        courseList.add(name);
+    }
+
+    public void setCourseList(ArrayList<courseName> courseList) {
+        this.courseList = courseList;
     }
 }

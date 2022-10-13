@@ -55,7 +55,8 @@ public class StudentController {
     }
 
     public Student updateStudent(int id) throws Exception{
-        return studentManager.updateStudent(id, studentInputter.inputInformation());
+        int index = studentManager.searchStudentById(id);
+        return studentManager.updateStudent(index, studentInputter.inputInformation());
     }
 
     public Student deleteStudent(int id) throws Exception {

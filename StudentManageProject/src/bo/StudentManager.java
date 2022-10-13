@@ -9,6 +9,7 @@ package bo;
 import java.util.ArrayList;
 
 import model.Student;
+import model.courseName;
 import utils.StringUtils;
 
 /**
@@ -30,14 +31,26 @@ public class StudentManager {
         return studentList;
     }
 
+    public ArrayList<courseName> noMoreDuplicatedCourse(Student s, Student e) {
+        ArrayList<courseName> ret = e.getCourseList();
+        for (courseName n : s.getCourseList()) {
+            if (!ret.contains(n)){
+                ret.add(n);
+            }
+        }
+        return ret;
+    }
+
     public boolean checkExist(Student s) {
         for (Student e : studentList) {
+            if (s.getId() == e.getId() &&
+                    !StringUtils.removeAllBlank(s.getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(e.getStudentName()))) {
+                return false;
+            }
             if (StringUtils.removeAllBlank(s.getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(e.getStudentName()))
                     && s.getSemester() == e.getSemester()
                     && s.getId() == e.getId()) {
-                if (!s.getCourseName().equals(e.getCourseName())) {
-                    e.setTotalCourse(e.getTotalCourse() + 1);
-                }
+                e.setCourseList(noMoreDuplicatedCourse(s, e));
                 return false;
             }
         }
@@ -71,11 +84,11 @@ public class StudentManager {
         throw new Exception("ID not found!");
     }
 
-    public Student updateStudent(int index, Student s){
+    public Student updateStudent(int index, Student s) {
         return studentList.set(index, s);
     }
 
-    public Student removeStudentById(int index){
+    public Student removeStudentById(int index) {
         return studentList.remove(index);
     }
 
@@ -83,7 +96,7 @@ public class StudentManager {
     public String toString() {
         String ret = "";
         for (Student s : studentList) {
-            ret += s.getId() + " | " + StringUtils.normalFormName(s.getStudentName()) + " | " + s.getCourseName() + " | " + s.getTotalCourse() + "\n";
+            ret += s.toString();
         }
         return ret;
     }
