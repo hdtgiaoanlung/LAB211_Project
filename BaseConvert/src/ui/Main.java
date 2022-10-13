@@ -1,9 +1,6 @@
 package ui;
 
-import bo.BaseConverter;
-import bo.NumberInputer;
 import controller.BaseConverterController;
-import entity.BaseType;
 import utils.InputUtils;
 
 public class Main {

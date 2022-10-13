@@ -22,7 +22,7 @@ public class EmployeeInput {
         employee.setAddress(InputUtils.getNonEmptyString("Enter address: "));
         employee.setDob(InputUtils.getInt("Enter birth year: ", "Input number only", "Input must be in range from 1900 to present!", 1900, YearMonth.now().getYear()));
         employee.setSex(InputUtils.getGender("Enter gender: "));
-        employee.setSalary(InputUtils.getInt("Enter salary: ", "Input number only!", "Input must be in range of [100, 999999000]", 100, 999999000));
+        employee.setSalary(InputUtils.getInt("Enter salary: ", "Input number only!", "Input must be in range!", 100, Integer.MAX_VALUE));
         employee.setAgency(InputUtils.getNonEmptyString("Enter agency: "));
         return employee;
     }
