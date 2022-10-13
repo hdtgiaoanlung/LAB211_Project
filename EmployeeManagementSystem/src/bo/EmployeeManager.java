@@ -24,7 +24,8 @@ public class EmployeeManager {
     public ArrayList<Employee> searchByName(String name) {
         ArrayList<Employee> ret = new ArrayList<>();
         for (int i = 0; i < empList.size(); i++) {
-            if (empList.get(i).getFirstName().toLowerCase().contains(name.toLowerCase()) || empList.get(i).getLastName().toLowerCase().contains(name.toLowerCase())) {
+            if (empList.get(i).getFirstName().toLowerCase().contains(name.toLowerCase())
+                    || empList.get(i).getLastName().toLowerCase().contains(name.toLowerCase())) {
                 ret.add(empList.get(i));
             }
         }
