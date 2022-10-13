@@ -25,58 +25,50 @@ public class StudentController {
         studentManager = new StudentManager();
     }
 
-    private Student addNewStudent() {
+    public Student addNewStudent() throws Exception {
         studentInputter = new StudentInputter();
-        studentInputter.inputInformation();
-        Student s = studentInputter.getStudent();
+        Student s = studentInputter.inputInformation();
         studentManager.addStudent(s);
         return s;
-    }
-
-    public void addStudentByNumber(int numberStudent){
-        ArrayList<Student> temp = new ArrayList<>();
-        for (int i = 0; i < numberStudent; i++){
-            Student s = addNewStudent();
-            temp.add(s);
-            if(studentManager.searchStudentByName(s.getStudentName()).size() == 0){
-                studentManager.addStudent(s);
-            }
-        }
     }
 
     public void displayAllStudent(){
         System.out.println("List of Students: ");
         System.out.println(studentManager);
     }
-    public void findAndSortStudent() {
-        String name = StringUtils.getStringByRegex("Enter search name: ", "Input characters only please!", "[A-Za-z ]+");
-        ArrayList<Student> ret = studentManager.searchStudentByName(name);
-        if (ret.isEmpty()) {
-            System.out.println("No Students found");
+
+    public void findAndSortStudent(String name){
+        ArrayList<Student> foundStudent = studentManager.searchStudentByName(name);
+        if (foundStudent.size() == 0) {
+            System.out.println("No students found!");
         } else {
-            Collections.sort(ret, new Comparator<Student>() {
+            Collections.sort(foundStudent, new Comparator<Student>() {
                 @Override
                 public int compare(Student student, Student t1) {
                     return student.getStudentName().compareTo(t1.getStudentName());
                 }
             });
-            System.out.println("The found student list: ");
-            for(Student s : ret){
-                System.out.println(StringUtils.normalFormName(s.getStudentName()));
+            for (Student s : foundStudent) {
+                System.out.println(s.toString());
             }
         }
     }
 
-    public void updateAndDelete() {
-        int id = StringUtils.getInt("Enter Student Id: ", "Input number only", "Input must be in range of [1, " + studentManager.getStudentList().size() + "]", 1, studentManager.getStudentList().size());
-        int index = studentManager.searchStudentById(id);
-        if(index != -1 ){
-            boolean choice = StringUtils.chooseUpdateDelete();
-            if(choice){
-                Student s = studentInputter.inputInformation();
-                studentManager.updateStudent(index, s);
-            }
-        }
+    public Student updateStudent(int id) throws Exception{
+        return studentManager.updateStudent(id, addNewStudent());
+    }
 
+    public Student deleteStudent(int id) throws Exception {
+        int index = studentManager.searchStudentById(id);
+        return studentManager.removeStudentById(index);
+    }
+
+    public Student updateAndDeleteStudent() throws Exception{
+        int id = StringUtils.getInt("Enter student ID to update: ", "Input number only!", "Input must be in range", 1, studentManager.getStudentList().size());
+        if (StringUtils.chooseUpdateDelete()) {
+            return updateStudent(id);
+        } else {
+            return deleteStudent(id);
+        }
     }
 }

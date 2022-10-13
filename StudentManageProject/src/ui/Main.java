@@ -16,8 +16,8 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        StudentController sc = new StudentController();
+    public static void main(String[] args) throws Exception {
+        StudentController controller = new StudentController();
         String menu = "\nWELCOME TO STUDENT MANAGEMENT\n"
                 + "1. Create\n"
                 + "2. Find and Sort\n"
@@ -31,18 +31,22 @@ public class Main {
             int choice = StringUtils.getInt("Enter your choice: ", "Input number only!", "Input must be in range of [1, 5]", 1, 5);
             switch (choice) {
                 case 1:
-                    sc.addStudentByNumber(StringUtils.getInt("Enter number of student: ", "Enter number only!", "Input must be in range of [10, 500]", 10, 500));
+                    controller.addNewStudent();
                     break;
                 case 2:
-                    sc.findAndSortStudent();
+                    String searchName = StringUtils.getStringByRegex("Enter search name: ", "Input character only!", "[A-Za-z ]+");
+                    controller.findAndSortStudent(searchName);
                     break;
                 case 3:
-                    sc.updateAndDelete();
-                case 4:
-                    sc.displayAllStudent();
+                    controller.updateAndDeleteStudent();
                     break;
-                default:
+                case 4:
+                    controller.displayAllStudent();
+                    break;
+                case 5:
                     return;
+                default:
+                    throw new AssertionError();
             }
         } while (StringUtils.pressYNToContinue());
 
