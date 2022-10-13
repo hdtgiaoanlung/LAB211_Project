@@ -13,12 +13,21 @@ public class EmployeeManager {
         empList = new ArrayList<>();
     }
 
-    public void addNewEmployee(Employee e) {
-        if (checkExist(e.getId()) == -1) {
+    public void addNewEmployee(Employee e) throws Exception{
+        if (checkExist(e.getId())) {
             empList.add(e);
-        } else {
-            System.out.println("The id already exists!");
+            return;
         }
+        throw new Exception("Id is already exists!");
+    }
+
+    public boolean checkExist(int id) {
+        for (Employee e : empList) {
+            if (e.getId() == id) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public ArrayList<Employee> searchByName(String name) {
@@ -32,26 +41,22 @@ public class EmployeeManager {
         return ret;
     }
 
-    public void removeEmployee(int id) {
-        int index = checkExist(id);
-        if (index == -1) {
-            System.out.println("Id not found!");
-        } else {
-            empList.remove(index);
-        }
+    public void removeEmployee(int id) throws Exception {
+        int index = searchById(id);
+        empList.remove(index);
     }
 
     public void updateEmployee(int index, Employee e) {
         empList.set(index, e);
     }
 
-    public int checkExist(int id) {
+    public int searchById(int id) throws Exception {
         for (int i = 0; i < empList.size(); i++) {
             if (empList.get(i).getId() == id) {
                 return i;
             }
         }
-        return -1;
+        throw new Exception("Id not found!");
     }
 
     public ArrayList<Employee> sortBySalary() {

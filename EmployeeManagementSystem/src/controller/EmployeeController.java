@@ -20,15 +20,15 @@ public class EmployeeController {
         System.out.println(employeeManager);
     }
 
-    public void add() {
+    public void add() throws Exception{
         employeeInput = new EmployeeInput();
         employeeManager.addNewEmployee(employeeInput.inputInformation());
     }
 
-    public void update() {
-        int id = InputUtils.getInt("Enter Id of update student: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
+    public void update() throws Exception {
+        int id = InputUtils.getInt("Enter Id of update employee: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
         employeeInput = new EmployeeInput();
-        int index = employeeManager.checkExist(id);
+        int index = employeeManager.searchById(id);
         if (index == -1) {
             System.out.println("Id not found!");
         } else {
@@ -36,7 +36,7 @@ public class EmployeeController {
         }
     }
 
-    public void remove() {
+    public void remove() throws Exception{
         int id = InputUtils.getInt("Enter Id of removed student: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
         employeeManager.removeEmployee(id);
     }

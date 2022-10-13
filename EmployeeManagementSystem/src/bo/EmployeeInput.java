@@ -14,7 +14,7 @@ public class EmployeeInput {
     }
 
     public Employee inputInformation() {
-        employee.setId(InputUtils.getInt("Enter student id: ", "Input number only!", "Input must be in range of [1, 9999]", 1, 9999));
+        employee.setId(InputUtils.getInt("Enter employee id: ", "Input number only!", "Input must be in range of [1, 9999]", 1, 9999));
         employee.setFirstName(InputUtils.getStringByRegex("Enter first name: ", "Input character only!", "[A-Za-z ]+"));
         employee.setLastName(InputUtils.getStringByRegex("Enter last name: ", "Input character only!", "[A-Za-z ]+"));
         employee.setPhone(InputUtils.getStringByRegex("Enter phone number: ", "Input number only!", "[0-9 ]+"));
