@@ -44,8 +44,17 @@ public class BaseConverter {
         if (from == to) {
             return input.replaceAll("^0+", "");
         }
+        String dec = baseToDec(input, from);
         if (to == BaseType.Dec){
             return baseToDec(input, to);
+        } else {
+            switch (to) {
+                case Bin:
+                    return decToBase(dec, BaseType.Bin);
+                case Hex:
+                    return decToBase(dec, BaseType.Hex);
+            }
         }
+        return "0";
     }
 }
