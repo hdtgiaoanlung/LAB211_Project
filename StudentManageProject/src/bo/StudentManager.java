@@ -23,7 +23,7 @@ public class StudentManager {
         studentList = new ArrayList<>();
     }
 
-    private int searchStudentByIdAndSemester(int id, int semester) {
+    public int searchStudentByIdAndSemester(int id, int semester) {
         for (int i = 0; i < studentList.size(); i++) {
             if(studentList.get(i).getId() == id && studentList.get(i).getSemester() == semester) {
                 return i;
@@ -69,15 +69,6 @@ public class StudentManager {
             }
         }
         return ret;
-    }
-
-    public int searchStudentById(int Id) {
-        for (int i = 0; i < studentList.size(); i++) {
-            if (studentList.get(i).getId() == Id) {
-                return i;
-            }
-        }
-        return -1;
     }
 
     public Student updateStudent(int index, Student s) {

@@ -42,13 +42,18 @@ public class Main {
                         }
                         break;
                     case 2:
+
                         String searchName = StringUtils.getStringByRegex("Enter search name: ", "Input character only!", "[A-Za-z ]+");
                         controller.findAndSortStudent(searchName);
                         break;
                     case 3:
+                        System.out.println("List of Students: ");
+                        System.out.println(Student.HEADER_OUTPUT);
+                        System.out.println(controller.studentManager);
                         int id = StringUtils.getInt("Enter student ID to update: ", "Input number only!", "Input must be in range", 1, Integer.MAX_VALUE);
+                        int semester = StringUtils.getInt("Enter semester of search student: ", "Input number only!", "Input must be in range", 1, 100);
                         boolean chooseUpdateDelete = StringUtils.chooseUpdateDelete();
-                        Student s = controller.updateAndDeleteStudent(id, chooseUpdateDelete);
+                        Student s = controller.updateAndDeleteStudent(id, semester, chooseUpdateDelete);
                         if (s == null) {
                             System.err.println("Update/Delete fail!");
                         } else {

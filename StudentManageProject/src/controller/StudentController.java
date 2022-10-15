@@ -51,8 +51,8 @@ public class StudentController {
         }
     }
 
-    public Student updateStudent(int id){
-        int index = studentManager.searchStudentById(id);
+    public Student updateStudent(int id, int semester){
+        int index = studentManager.searchStudentByIdAndSemester(id, semester);
         if (index != -1) {
             return studentManager.updateStudent(index, studentInputter.inputInformation());
         } else {
@@ -60,8 +60,8 @@ public class StudentController {
         }
     }
 
-    public Student deleteStudent(int id){
-        int index = studentManager.searchStudentById(id);
+    public Student deleteStudent(int id, int semester){
+        int index = studentManager.searchStudentByIdAndSemester(id, semester);
         if (index != -1) {
             return studentManager.removeStudentById(index);
         } else {
@@ -69,11 +69,11 @@ public class StudentController {
         }
     }
 
-    public Student updateAndDeleteStudent(int id, boolean updateOrDelete){
+    public Student updateAndDeleteStudent(int id, int semester, boolean updateOrDelete){
         if (updateOrDelete) {
-            return updateStudent(id);
+            return updateStudent(id, semester);
         } else {
-            return deleteStudent(id);
+            return deleteStudent(id, semester);
         }
     }
 }
