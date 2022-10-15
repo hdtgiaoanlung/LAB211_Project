@@ -6,6 +6,7 @@
 package ui;
 
 import controller.StudentController;
+import model.Student;
 import utils.StringUtils;
 
 /**
@@ -32,7 +33,13 @@ public class Main {
             try {
                 switch (choice) {
                     case 1:
-                        controller.addNewStudent();
+                        Student add = controller.addNewStudent();
+                        if (add == null) {
+                            System.err.println("Add failed!");
+                        } else {
+                            System.err.println("Add Success");
+                            System.err.println(add.toString());
+                        }
                         break;
                     case 2:
                         String searchName = StringUtils.getStringByRegex("Enter search name: ", "Input character only!", "[A-Za-z ]+");
@@ -42,7 +49,9 @@ public class Main {
                         controller.updateAndDeleteStudent();
                         break;
                     case 4:
-                        controller.displayAllStudent();
+                        System.out.println("List of Students: ");
+                        System.out.println(Student.HEADER_OUTPUT);
+                        System.out.println(controller.studentManager);
                         break;
                     case 5:
                         return;

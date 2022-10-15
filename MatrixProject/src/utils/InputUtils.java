@@ -7,7 +7,7 @@ public class InputUtils {
         Scanner sc = new Scanner(System.in);
         String output = null;
         while (true) {
-            System.out.println(mess);
+            System.out.print(mess);
             output = sc.nextLine();
             if (output.matches(regex)) {
                 return output;
@@ -31,5 +31,9 @@ public class InputUtils {
     public static boolean pressYNToContinue(){
         String ret = getStringByRegex("Do you want to continue? (Y/N) ", "Input Y/N only!", "[YNyn]");
         return ret.equalsIgnoreCase("y");
+    }
+
+    public static int getFactorValue(int rows, int columns){
+        return getInt("Enter Matrix[" + (rows + 1) + "][" + (columns + 1) + "]", "Input number only!", "Input must be in range of Integer", Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 }

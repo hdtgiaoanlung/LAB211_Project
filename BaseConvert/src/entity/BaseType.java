@@ -2,7 +2,8 @@ package entity;
 
 public enum BaseType {
     Bin, Dec, Hex;
-    public  int getBaseToInt(){
+
+    public int getBaseToInt() {
         switch (this) {
             case Bin:
                 return 2;

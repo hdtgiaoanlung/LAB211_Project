@@ -10,7 +10,9 @@ public class Matrix {
     }
 
     public Matrix(int rows, int columns) {
-        matrixValue = new int[rows][columns];
+        this.rows = rows;
+        this.columns = columns;
+        this.matrixValue = new int[rows][columns];
     }
 
     public int getRows() {
@@ -33,9 +35,23 @@ public class Matrix {
         this.columns = columns;
     }
 
-    public void setMatrix(int[][] matrix) {
-        this.matrixValue = matrix;
+    public void setFactorValue(int rows, int columns, int value) {
+        matrixValue[rows][columns] = value;
+    }
+
+    public int getFactorValue(int rows, int columns) {
+        return matrixValue[rows][columns];
     }
 
 
+    public String displayMatrix() {
+        String ret = "";
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0 ; j < columns; j++) {
+                ret += "[" + getFactorValue(i, j) + "]";
+            }
+            System.out.println();
+        }
+        return ret;
+    }
 }

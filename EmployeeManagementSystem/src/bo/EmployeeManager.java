@@ -13,21 +13,16 @@ public class EmployeeManager {
         empList = new ArrayList<>();
     }
 
-    public void addNewEmployee(Employee e) throws Exception{
-        if (checkExist(e.getId())) {
-            empList.add(e);
-            return;
-        }
-        throw new Exception("Id is already exists!");
+
+    private boolean checkExist(int id) {
+        return searchById(id) != -1;
     }
 
-    public boolean checkExist(int id) {
-        for (Employee e : empList) {
-            if (e.getId() == id) {
-                return false;
-            }
+    public boolean addNewEmployee(Employee e) throws Exception {
+        if (!checkExist(e.getId())) {
+            return empList.add(e);
         }
-        return true;
+        throw new Exception("Id is already exists!");
     }
 
     public ArrayList<Employee> searchByName(String name) {
@@ -41,22 +36,21 @@ public class EmployeeManager {
         return ret;
     }
 
-    public void removeEmployee(int id) throws Exception {
-        int index = searchById(id);
-        empList.remove(index);
+    public Employee removeEmployee(int index){
+        return empList.remove(index);
     }
 
-    public void updateEmployee(int index, Employee e) {
-        empList.set(index, e);
+    public Employee updateEmployee(int index, Employee e) {
+        return empList.set(index, e);
     }
 
-    public int searchById(int id) throws Exception {
+    public int searchById(int id) {
         for (int i = 0; i < empList.size(); i++) {
             if (empList.get(i).getId() == id) {
                 return i;
             }
         }
-        throw new Exception("Id not found!");
+        return -1;
     }
 
     public ArrayList<Employee> sortBySalary() {

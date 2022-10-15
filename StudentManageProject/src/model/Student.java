@@ -1,11 +1,15 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 import model.courseName;
 import utils.StringUtils;
 
 public class Student {
 
+    public static String FORMAT_OUTPUT = "%-5s | %-20s | %-10s | %-10s | %-3s \n";
+    public static String HEADER_OUTPUT = String.format(FORMAT_OUTPUT, "id", "student name", "semester", "course name", "total course");
     private int id;
     private String studentName;
     private int semester;
@@ -14,6 +18,13 @@ public class Student {
 
     public Student() {
         courseList = new ArrayList<>();
+    }
+
+    public Student(int id, String studentName, int semester, ArrayList<courseName> courseList) {
+        this.id = id;
+        this.studentName = studentName;
+        this.semester = semester;
+        this.courseList = courseList;
     }
 
     public int getId() {
@@ -40,20 +51,39 @@ public class Student {
         this.semester = semester;
     }
 
-    @Override
-    public String toString() {
-        return id + " | " + StringUtils.normalFormName(studentName) + " | " + semester + " | " + courseList.get(0).getCourseName() + " | " + courseList.size();
-    }
-
     public ArrayList<courseName> getCourseList() {
         return courseList;
     }
 
-    public void updateCourseList(courseName name) throws Exception{
-        courseList.add(name);
+    @Override
+    public String toString() {
+        return String.format(FORMAT_OUTPUT, id, studentName, semester, courseList.get(0), "");
     }
 
-    public void setCourseList(ArrayList<courseName> courseList) {
-        this.courseList = courseList;
+    private int countCourse(courseName name) {
+        int count = 0;
+        for (courseName c : courseList) {
+            if (c.equals(name)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public String displayStudentInfo() {
+        String ret = "";
+        int javaCount = countCourse(courseName.Java);
+        int netCount = countCourse(courseName.Net);
+        int cppCount = countCourse(courseName.Cpp);
+        if (javaCount > 0) {
+            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Java, javaCount + "\n");
+        }
+        if (netCount > 0) {
+            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Net, netCount + "\n");
+        }
+        if (cppCount > 0) {
+            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Cpp, cppCount + "\n");
+        }
+        return ret;
     }
 }

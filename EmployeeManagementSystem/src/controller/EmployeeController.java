@@ -20,45 +20,41 @@ public class EmployeeController {
         System.out.println(employeeManager);
     }
 
-    public void add() throws Exception{
+    public Employee add() throws Exception {
         employeeInput = new EmployeeInput();
-        employeeManager.addNewEmployee(employeeInput.inputInformation());
+        Employee e = employeeInput.inputInformation();
+        if (employeeManager.addNewEmployee(e)) {
+            return e;
+        }
+        return null;
     }
 
-    public void update() throws Exception {
-        int id = InputUtils.getInt("Enter Id of update employee: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
-        employeeInput = new EmployeeInput();
+    public Employee update(int id){
         int index = employeeManager.searchById(id);
-        if (index == -1) {
-            System.out.println("Id not found!");
-        } else {
-            employeeManager.updateEmployee(index, employeeInput.inputInformation());
+        if (index != -1) {
+            employeeInput = new EmployeeInput();
+            Employee e = employeeInput.inputInformation();
+            return employeeManager.updateEmployee(index, e);
         }
+        return null;
     }
 
-    public void remove() throws Exception{
-        int id = InputUtils.getInt("Enter Id of removed student: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
-        employeeManager.removeEmployee(id);
+    public Employee remove(int id){
+        int index = employeeManager.searchById(id);
+        if (index != -1) {
+            Employee e = employeeManager.removeEmployee(index);
+            return e;
+        }
+        return null;
     }
 
-    public void search() {
+    public ArrayList<Employee> search(String name) throws Exception {
         displayAllEmployee();
-        String name = InputUtils.getStringByRegex("Enter search name: ", "Input characters only!", "[A-Za-z ]+");
-        ArrayList<Employee> searchList = employeeManager.searchByName(name);
-        if (searchList.isEmpty()) {
-            System.out.println("No employee found!");
-        } else {
-            for (Employee e : searchList) {
-                System.out.println(e.toString());
-            }
-        }
+        return employeeManager.searchByName(name);
     }
 
-    public void sort() {
-        ArrayList<Employee> sortedList = employeeManager.sortBySalary();
-        for (Employee e : sortedList) {
-            System.out.println(e.toString());
-        }
+    public ArrayList<Employee> sort() {
+        return employeeManager.sortBySalary();
     }
 
 

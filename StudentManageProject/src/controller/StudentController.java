@@ -18,23 +18,24 @@ import java.util.Comparator;
  * @author dinht
  */
 public class StudentController {
-    StudentManager studentManager;
-    StudentInputter studentInputter;
+    public StudentManager studentManager;
+    public StudentInputter studentInputter;
 
     public StudentController() {
         studentManager = new StudentManager();
     }
 
-    public Student addNewStudent() throws Exception {
+    public Student addNewStudent(){
         studentInputter = new StudentInputter();
         Student s = studentInputter.inputInformation();
-        studentManager.addStudent(s);
-        return s;
+        if (studentManager.addStudent(s)){
+            return s;
+        }
+        return null;
     }
 
     public void displayAllStudent(){
-        System.out.println("List of Students: ");
-        System.out.println(studentManager);
+
     }
 
     public void findAndSortStudent(String name){
@@ -49,12 +50,12 @@ public class StudentController {
                 }
             });
             for (Student s : foundStudent) {
-                System.out.println(s.toString());
+                System.out.println(s.displayStudentInfo());
             }
         }
     }
 
-    public Student updateStudent(int id) throws Exception{
+    public Student updateStudent(int id){
         int index = studentManager.searchStudentById(id);
         return studentManager.updateStudent(index, studentInputter.inputInformation());
     }
