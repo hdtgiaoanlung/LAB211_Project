@@ -41,7 +41,7 @@ public class Main {
                         }
                         break;
                     case 3:
-                        id = InputUtils.getInt("Enter Id of removed student: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
+                        id = InputUtils.getInt("Enter Id of removed employee: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
                         Employee remove = employeeController.remove(id);
                         if (remove == null) {
                             System.err.println("Delete fail");
