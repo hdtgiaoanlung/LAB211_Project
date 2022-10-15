@@ -23,16 +23,16 @@ public class StudentManager {
         studentList = new ArrayList<>();
     }
 
-    public StudentManager(ArrayList<Student> listStudent) {
-        this.studentList = listStudent;
+    private int searchStudentByIdAndSemester(int id, int semester) {
+        for (int i = 0; i < studentList.size(); i++) {
+            if(studentList.get(i).getId() == id && studentList.get(i).getSemester() == semester) {
+                return i;
+            }
+        }
+        return -1;
     }
-
-    public ArrayList<Student> getStudentList() {
-        return studentList;
-    }
-
-    public int searchStudent(Student s) {
-        int index = searchStudentById(s.getId());
+    private int searchStudent(Student s) {
+        int index = searchStudentByIdAndSemester(s.getId(), s.getSemester());
         if (index == -1)
             return -1;
         else {
@@ -96,14 +96,5 @@ public class StudentManager {
         }
         return ret;
     }
-
-//    public static void main(String[] args) throws Exception {
-//        StudentManager sm = new StudentManager();
-//
-//        Student s = new Student(1, "admin", 3, new ArrayList<>());
-//        Student s2 = new Student(1, "admin", 3, new ArrayList<>());
-//        System.out.println(sm.addStudent(s));
-//        System.out.println(sm.searchStudent(s2));
-//    }
 
 }

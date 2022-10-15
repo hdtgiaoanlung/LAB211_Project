@@ -49,10 +49,9 @@ public class StringUtils {
 
     public static String getStringByRegex(String mess, String error, String regex) {
         Scanner sc = new Scanner(System.in);
-        String output = null;
         while (true) {
-            System.out.println(mess);
-            output = sc.nextLine();
+            System.out.print(mess);
+            String output = sc.nextLine();
             if (output.matches(regex)) {
                 return output;
             } else {

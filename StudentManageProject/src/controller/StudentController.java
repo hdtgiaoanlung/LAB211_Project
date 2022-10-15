@@ -34,10 +34,6 @@ public class StudentController {
         return null;
     }
 
-    public void displayAllStudent(){
-
-    }
-
     public void findAndSortStudent(String name){
         ArrayList<Student> foundStudent = studentManager.searchStudentByName(name);
         if (foundStudent.size() == 0) {
@@ -57,17 +53,24 @@ public class StudentController {
 
     public Student updateStudent(int id){
         int index = studentManager.searchStudentById(id);
-        return studentManager.updateStudent(index, studentInputter.inputInformation());
+        if (index != -1) {
+            return studentManager.updateStudent(index, studentInputter.inputInformation());
+        } else {
+            return null;
+        }
     }
 
-    public Student deleteStudent(int id) throws Exception {
+    public Student deleteStudent(int id){
         int index = studentManager.searchStudentById(id);
-        return studentManager.removeStudentById(index);
+        if (index != -1) {
+            return studentManager.removeStudentById(index);
+        } else {
+            return null;
+        }
     }
 
-    public Student updateAndDeleteStudent() throws Exception{
-        int id = StringUtils.getInt("Enter student ID to update: ", "Input number only!", "Input must be in range", 1, Integer.MAX_VALUE);
-        if (StringUtils.chooseUpdateDelete()) {
+    public Student updateAndDeleteStudent(int id, boolean updateOrDelete){
+        if (updateOrDelete) {
             return updateStudent(id);
         } else {
             return deleteStudent(id);

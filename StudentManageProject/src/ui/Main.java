@@ -46,7 +46,20 @@ public class Main {
                         controller.findAndSortStudent(searchName);
                         break;
                     case 3:
-                        controller.updateAndDeleteStudent();
+                        int id = StringUtils.getInt("Enter student ID to update: ", "Input number only!", "Input must be in range", 1, Integer.MAX_VALUE);
+                        boolean chooseUpdateDelete = StringUtils.chooseUpdateDelete();
+                        Student s = controller.updateAndDeleteStudent(id, chooseUpdateDelete);
+                        if (s == null) {
+                            System.err.println("Update/Delete fail!");
+                        } else {
+                            if(chooseUpdateDelete) {
+                                System.err.println("Update Success");
+                                System.err.println(s.toString());
+                            } else {
+                                System.err.println("Delete Success");
+                                System.err.println(s.toString());
+                            }
+                        }
                         break;
                     case 4:
                         System.out.println("List of Students: ");
