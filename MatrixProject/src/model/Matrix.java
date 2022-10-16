@@ -47,10 +47,10 @@ public class Matrix {
     public String displayMatrix() {
         String ret = "";
         for (int i = 0; i < rows; i++) {
-            for (int j = 0 ; j < columns; j++) {
+            for (int j = 0; j < columns; j++) {
                 ret += "[" + getFactorValue(i, j) + "]";
             }
-            System.out.println();
+            ret += "\n";
         }
         return ret;
     }

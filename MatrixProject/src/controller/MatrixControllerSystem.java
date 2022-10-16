@@ -5,9 +5,8 @@ import bo.MatrixInputter;
 import model.Matrix;
 
 public class MatrixControllerSystem {
-    MatrixCalculator matrixCalculator;
-    MatrixInputter matrixInputter;
-
+    private MatrixCalculator matrixCalculator;
+    private MatrixInputter matrixInputter;
 
     private Matrix matrix1;
     private Matrix matrix2;
@@ -17,6 +16,7 @@ public class MatrixControllerSystem {
 
     public Matrix addition() throws Exception {
         matrix1 = matrixInputter.inputMatrix();
+        matrixInputter = new MatrixInputter();
         matrix2 = matrixInputter.inputMatrix();
 
         return matrixCalculator.addTwoMatrix(matrix1, matrix2);
