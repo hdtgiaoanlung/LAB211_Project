@@ -15,28 +15,25 @@ public class MatrixControllerSystem {
     }
 
     public Matrix addition() throws Exception {
-        matrix1 = matrixInputter.inputMatrix();
+        matrix1 = matrixInputter.inputMatrix(matrix1);
         matrixInputter = new MatrixInputter();
-        matrix2 = matrixInputter.inputMatrix();
+        matrix2 = matrixInputter.inputMatrix(matrix2);
 
         return matrixCalculator.addTwoMatrix(matrix1, matrix2);
     }
 
     public Matrix subtraction() throws Exception {
-        matrix1 = matrixInputter.inputMatrix();
-        matrix2 = matrixInputter.inputMatrix();
+        matrix1 = matrixInputter.inputMatrix(matrix1);
+        matrix2 = matrixInputter.inputMatrix(matrix2);
 
         return matrixCalculator.subtractTwoMatrix(matrix1, matrix2);
     }
 
     public Matrix multiplication() throws Exception {
-        matrix1 = matrixInputter.inputMatrix();
-        matrix2 = matrixInputter.inputMatrix();
+        matrix1 = matrixInputter.inputMatrix(matrix1);
+        matrix2 = matrixInputter.inputMatrix(matrix2);
 
         return matrixCalculator.multiplyTwoMatrix(matrix1, matrix2);
     }
 
-    public void displayResult() {
-
-    }
 }
