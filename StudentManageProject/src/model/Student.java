@@ -55,11 +55,6 @@ public class Student {
         return courseList;
     }
 
-    @Override
-    public String toString() {
-        return String.format(FORMAT_OUTPUT, id, studentName, semester, courseList.get(0), "");
-    }
-
     private int countCourse(courseName name) {
         int count = 0;
         for (courseName c : courseList) {

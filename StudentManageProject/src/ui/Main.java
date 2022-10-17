@@ -40,6 +40,7 @@ public class Main {
                             System.err.println("Add failed!");
                         } else {
                             System.err.println("Add Success");
+                            System.err.println(Student.HEADER_OUTPUT);
                             System.err.println(add.displayStudentInfo());
                         }
                         break;

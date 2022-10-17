@@ -20,7 +20,6 @@ public class StudentInputter {
     }
 
     public Student inputInformation(){
-        s = new Student();
         s.setId(StringUtils.getInt("Enter student id: ", "Input number only!", "Input must be in range of [1, " + Integer.MAX_VALUE + "]", 1, Integer.MAX_VALUE));
         s.setStudentName(StringUtils.getStringByRegex("Enter student name: ", "Characters only!", "[A-Za-z ]+"));
         s.setSemester(StringUtils.getInt("Enter semester: ", "Input number only!", "Input must in range of [1; 50]", 1, 50));
