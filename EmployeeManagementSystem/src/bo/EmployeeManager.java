@@ -25,23 +25,32 @@ public class EmployeeManager {
         throw new Exception("Id is already exists!");
     }
 
-    public ArrayList<Employee> searchByName(String name) {
-        ArrayList<Employee> ret = new ArrayList<>();
-        for (int i = 0; i < empList.size(); i++) {
-            if (empList.get(i).getFirstName().toLowerCase().contains(name.toLowerCase())
-                    || empList.get(i).getLastName().toLowerCase().contains(name.toLowerCase())) {
-                ret.add(empList.get(i));
+    public ArrayList<Employee> searchByName(String name) throws Exception{
+        if (!name.isEmpty()) {
+            ArrayList<Employee> ret = new ArrayList<>();
+            for (int i = 0; i < empList.size(); i++) {
+                if (empList.get(i).getFirstName().toLowerCase().contains(name.toLowerCase())
+                        || empList.get(i).getLastName().toLowerCase().contains(name.toLowerCase())) {
+                    ret.add(empList.get(i));
+                }
             }
+            return ret;
         }
-        return ret;
+        throw new Exception("Search name cannot be blank!");
     }
 
-    public Employee removeEmployee(int index){
-        return empList.remove(index);
+    public Employee removeEmployee(int index) throws Exception{
+        if (index != -1) {
+            return empList.remove(index);
+        }
+        throw new Exception("Employee not found!");
     }
 
-    public Employee updateEmployee(int index, Employee e) {
-        return empList.set(index, e);
+    public Employee updateEmployee(int index, Employee e) throws Exception{
+        if (index != - 1) {
+            return empList.set(index, e);
+        }
+        throw new Exception("Employee not found!");
     }
 
     public int searchById(int id) {

@@ -1,5 +1,6 @@
 package ui;
 
+import bo.EmployeeManager;
 import controller.EmployeeController;
 import entity.Employee;
 import utils.InputUtils;
@@ -27,7 +28,8 @@ public class Main {
                             System.err.println("Add fail");
                         } else {
                             System.err.println("Add Success");
-                            System.err.println(add.getDisplayString());
+                            System.err.println(Employee.HEADER_OUTPUT);
+                            System.err.println(add);
                         }
                         break;
                     case 2:
@@ -37,7 +39,8 @@ public class Main {
                             System.err.println("Update fail");
                         } else {
                             System.err.println("Update Success");
-                            System.err.println(update.getDisplayString());
+                            System.err.println(Employee.HEADER_OUTPUT);
+                            System.err.println(update);
                         }
                         break;
                     case 3:
@@ -47,21 +50,20 @@ public class Main {
                             System.err.println("Delete fail");
                         } else {
                             System.err.println("Remove Success");
-                            System.err.println(remove.getDisplayString());
+                            System.err.println(Employee.HEADER_OUTPUT);
+                            System.err.println(remove);
                         }
                         break;
                     case 4:
+                        employeeController.displayAllEmployee();
                         String name = InputUtils.getStringByRegex("Enter search name: ", "Input characters only!", "[A-Za-z ]+");
                         ArrayList<Employee> searchList = employeeController.search(name);
-                        if (searchList.isEmpty()) {
+                        if (searchList.size() == 0) {
                             System.err.println("No employees found!");
                         } else {
-                            for (int i = 0; i < searchList.size(); i++) {
-                                if (i == 0) {
-                                    System.out.println(searchList.get(i).getDisplayString());
-                                } else {
-                                    System.out.println(searchList.get(i).toString());
-                                }
+                            System.err.println(Employee.HEADER_OUTPUT);
+                            for (Employee e : searchList) {
+                                System.err.println(e.toString());
                             }
                         }
                         break;
@@ -70,12 +72,9 @@ public class Main {
                         if (sortedList.isEmpty()) {
                             System.err.println("No employees to display!");
                         } else {
-                            for (int i = 0; i < sortedList.size(); i++) {
-                                if (i == 0) {
-                                    System.out.println(sortedList.get(i).getDisplayString());
-                                } else {
-                                    System.out.println(sortedList.get(i).toString());
-                                }
+                            System.err.println(Employee.HEADER_OUTPUT);
+                            for (Employee e : sortedList) {
+                                System.err.println(e.toString());
                             }
                         }
                         break;

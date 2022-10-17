@@ -107,9 +107,4 @@ public class Employee {
         return ret;
     }
 
-    public String getDisplayString() {
-        return HEADER_OUTPUT + this;
-    }
-
-
 }
