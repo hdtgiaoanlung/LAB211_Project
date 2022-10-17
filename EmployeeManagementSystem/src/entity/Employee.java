@@ -103,8 +103,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        String ret = String.format(FORMAT_OUTPUT, id + "", InputUtils.normalFormName(firstName), InputUtils.normalFormName(lastName), sex, dob + "", phone, email, address, agency, salary + "");
-        return ret;
+        return String.format(FORMAT_OUTPUT, id + "", InputUtils.normalFormName(firstName), InputUtils.normalFormName(lastName), sex, dob + "", phone, email, address, agency, salary + "");
     }
 
 }
