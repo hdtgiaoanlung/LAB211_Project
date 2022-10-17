@@ -50,17 +50,15 @@ public class BaseConverter {
             return ret;
         }
         String dec = baseToDec(input, from);
-        if (to == BaseType.Dec) {
-            return baseToDec(input, to);
-        } else {
-            switch (to) {
-                case Bin:
-                    return decToBase(dec, BaseType.Bin);
-                case Hex:
-                    return decToBase(dec, BaseType.Hex);
-                default:
-                    return dec;
-            }
+        switch (to) {
+            case Bin:
+                return decToBase(input, BaseType.Bin);
+            case Dec:
+                return dec;
+            case Hex:
+                return decToBase(input, BaseType.Hex);
+            default:
+                return "0";
         }
     }
 }

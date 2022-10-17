@@ -38,11 +38,10 @@ public class InputUtils {
 
     public static String getNonEmptyString(String mess) {
         Scanner sc = new Scanner(System.in);
-        String ret = "";
         while (true) {
             System.out.print(mess);
-            ret = sc.nextLine();
-            if (ret.equalsIgnoreCase("")) {
+            String ret = sc.nextLine();
+            if (removeAllBlank(ret).isEmpty()) {
                 System.err.println("Please input a non-empty String!!!");
             } else {
                 return ret;

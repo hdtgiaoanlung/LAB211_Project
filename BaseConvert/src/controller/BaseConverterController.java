@@ -14,9 +14,9 @@ public class BaseConverterController {
     }
 
 
-    public String control(int originalChoice, int convertChoice, String numString) throws Exception{
+    public String control(int originalChoice, int convertChoice, String numString) throws Exception {
         BaseType originalBase = numberInputer.getBaseByChoice(originalChoice);
-        BaseType convertBase  = numberInputer.getBaseByChoice(convertChoice);
+        BaseType convertBase = numberInputer.getBaseByChoice(convertChoice);
         return baseConverter.convert(numString, originalBase, convertBase);
     }
 }

@@ -11,21 +11,16 @@ public class NumberInputer {
         do {
             switch (choice) {
                 case 1:
-                    BaseType base = BaseType.Bin;
-                    break;
+                    return BaseType.Bin;
                 case 2:
-                    base = BaseType.Dec;
-                    break;
+                    return BaseType.Dec;
                 case 3:
-                    base = BaseType.Hex;
-                    break;
+                    return BaseType.Hex;
                 case 4:
                     System.exit(0);
-                    break;
                 default:
                     throw new RuntimeException("Please enter a valid base type!");
             }
         } while (true);
     }
-
 }
