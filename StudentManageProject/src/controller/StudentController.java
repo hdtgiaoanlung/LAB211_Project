@@ -25,34 +25,31 @@ public class StudentController {
         studentManager = new StudentManager();
     }
 
-    public Student addNewStudent(){
+    public Student addNewStudent() {
         studentInputter = new StudentInputter();
         Student s = studentInputter.inputInformation();
-        if (studentManager.addStudent(s)){
+        if (studentManager.addStudent(s)) {
             return s;
         }
         return null;
     }
 
-    public void findAndSortStudent(String name){
-        ArrayList<Student> foundStudent = studentManager.searchStudentByName(name);
-        if (foundStudent.size() == 0) {
-            System.out.println("No students found!");
-        } else {
-            Collections.sort(foundStudent, new Comparator<Student>() {
-                @Override
-                public int compare(Student student, Student t1) {
-                    return student.getStudentName().compareTo(t1.getStudentName());
-                }
-            });
-            for (Student s : foundStudent) {
-                System.out.println(s.displayStudentInfo());
-            }
-        }
+    public ArrayList<Student> getSearchStudentById(int id) {
+        return studentManager.searchById(id);
     }
 
-    public Student updateStudent(int id, int semester){
-        int index = studentManager.searchStudentByIdAndSemester(id, semester);
+    public ArrayList<Student> findAndSortStudent(String name) {
+        ArrayList<Student> foundStudent = studentManager.searchStudentByName(name);
+        Collections.sort(foundStudent, new Comparator<Student>() {
+            @Override
+            public int compare(Student student, Student t1) {
+                return student.getStudentName().compareTo(t1.getStudentName());
+            }
+        });
+        return foundStudent;
+    }
+
+    public Student updateStudent(int index) {
         if (index != -1) {
             return studentManager.updateStudent(index, studentInputter.inputInformation());
         } else {
@@ -60,8 +57,7 @@ public class StudentController {
         }
     }
 
-    public Student deleteStudent(int id, int semester){
-        int index = studentManager.searchStudentByIdAndSemester(id, semester);
+    public Student deleteStudent(int index) {
         if (index != -1) {
             return studentManager.removeStudentById(index);
         } else {
@@ -69,11 +65,11 @@ public class StudentController {
         }
     }
 
-    public Student updateAndDeleteStudent(int id, int semester, boolean updateOrDelete){
+    public Student updateAndDeleteStudent(int id, boolean updateOrDelete) {
         if (updateOrDelete) {
-            return updateStudent(id, semester);
+            return updateStudent(id);
         } else {
-            return deleteStudent(id, semester);
+            return deleteStudent(id);
         }
     }
 }

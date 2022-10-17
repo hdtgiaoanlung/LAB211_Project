@@ -31,6 +31,16 @@ public class StudentManager {
         }
         return -1;
     }
+
+    public ArrayList<Student> searchById(int id) {
+        ArrayList<Student> ret = new ArrayList<>();
+        for (Student s : studentList) {
+            if (s.getId() == id) {
+                ret.add(s);
+            }
+        }
+        return ret;
+    }
     private int searchStudent(Student s) {
         int index = searchStudentByIdAndSemester(s.getId(), s.getSemester());
         if (index == -1)

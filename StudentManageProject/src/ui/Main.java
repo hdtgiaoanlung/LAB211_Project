@@ -9,6 +9,8 @@ import controller.StudentController;
 import model.Student;
 import utils.StringUtils;
 
+import java.util.ArrayList;
+
 /**
  * @author dinht
  */
@@ -17,7 +19,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         StudentController controller = new StudentController();
         String menu = "\nWELCOME TO STUDENT MANAGEMENT\n"
                 + "1. Create\n"
@@ -38,31 +40,42 @@ public class Main {
                             System.err.println("Add failed!");
                         } else {
                             System.err.println("Add Success");
-                            System.err.println(add.toString());
+                            System.err.println(add.displayStudentInfo());
                         }
                         break;
                     case 2:
-
                         String searchName = StringUtils.getStringByRegex("Enter search name: ", "Input character only!", "[A-Za-z ]+");
-                        controller.findAndSortStudent(searchName);
+                        ArrayList<Student> foundStudent = controller.findAndSortStudent(searchName);
+                        if (foundStudent.isEmpty()){
+                            System.err.println("No Students found!");
+                        } else {
+                            System.out.println(Student.HEADER_OUTPUT);
+                            for (int i = 0; i < foundStudent.size(); i++) {
+                                System.out.println(foundStudent.get(i).displayStudentInfo());
+                            }
+                        }
                         break;
                     case 3:
                         System.out.println("List of Students: ");
                         System.out.println(Student.HEADER_OUTPUT);
                         System.out.println(controller.studentManager);
-                        int id = StringUtils.getInt("Enter student ID to update: ", "Input number only!", "Input must be in range", 1, Integer.MAX_VALUE);
-                        int semester = StringUtils.getInt("Enter semester of search student: ", "Input number only!", "Input must be in range", 1, 100);
+                        int id = StringUtils.getInt("Enter student ID to update/delete: ", "Input number only!", "Input must be in range", 1, Integer.MAX_VALUE);
+                        ArrayList<Student> searchList = controller.getSearchStudentById(id);
+                        for (int i = 0; i < searchList.size(); i++) {
+                            System.out.println("No." + (i + 1) + " |" + searchList.get(i).toString());
+                        }
+                        int index = StringUtils.getInt("Enter No. of student to update/delete: ", "Input number only!", "Input must be in range", 1, searchList.size());
                         boolean chooseUpdateDelete = StringUtils.chooseUpdateDelete();
-                        Student s = controller.updateAndDeleteStudent(id, semester, chooseUpdateDelete);
+                        Student s = controller.updateAndDeleteStudent(index - 1, chooseUpdateDelete);
                         if (s == null) {
                             System.err.println("Update/Delete fail!");
                         } else {
-                            if(chooseUpdateDelete) {
+                            if (chooseUpdateDelete) {
                                 System.err.println("Update Success");
-                                System.err.println(s.toString());
+                                System.err.println(s.displayStudentInfo());
                             } else {
                                 System.err.println("Delete Success");
-                                System.err.println(s.toString());
+                                System.err.println(s.displayStudentInfo());
                             }
                         }
                         break;
