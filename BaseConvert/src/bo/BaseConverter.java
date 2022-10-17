@@ -35,6 +35,7 @@ public class BaseConverter {
     }
 
     public String convert(String input, BaseType from, BaseType to) throws Exception {
+        input = InputUtils.removeAllBlank(input).toUpperCase();
         String format = BIT_STRING.substring(0, from.getBaseToInt());
         for (int i = 0; i < input.length(); i++) {
             if (!format.contains(input.charAt(i) + "")) {
@@ -57,8 +58,9 @@ public class BaseConverter {
                     return decToBase(dec, BaseType.Bin);
                 case Hex:
                     return decToBase(dec, BaseType.Hex);
+                default:
+                    return dec;
             }
         }
-        return "0";
     }
 }

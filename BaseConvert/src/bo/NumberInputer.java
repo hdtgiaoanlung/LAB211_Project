@@ -8,11 +8,10 @@ public class NumberInputer {
     }
 
     public BaseType getBaseByChoice(int choice) {
-        BaseType base = null;
         do {
             switch (choice) {
                 case 1:
-                    base = BaseType.Bin;
+                    BaseType base = BaseType.Bin;
                     break;
                 case 2:
                     base = BaseType.Dec;
@@ -23,8 +22,9 @@ public class NumberInputer {
                 case 4:
                     System.exit(0);
                     break;
+                default:
+                    throw new RuntimeException("Please enter a valid base type!");
             }
-            return base;
         } while (true);
     }
 
