@@ -42,10 +42,14 @@ public class BaseConverter {
             }
         }
         if (from == to) {
-            return input.replaceAll("^0+", "");
+            String ret = input.replaceAll("^0+", "");
+            if (ret.isEmpty()) {
+                return "0";
+            }
+            return ret;
         }
         String dec = baseToDec(input, from);
-        if (to == BaseType.Dec){
+        if (to == BaseType.Dec) {
             return baseToDec(input, to);
         } else {
             switch (to) {
