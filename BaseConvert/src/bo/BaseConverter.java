@@ -5,7 +5,7 @@ import utils.InputUtils;
 
 public class BaseConverter {
 
-    private static String BIT_STRING = "0123456789ABCDEF";
+    public static String BIT_STRING = "0123456789ABCDEF";
 
     public BaseConverter() {
     }
@@ -58,7 +58,7 @@ public class BaseConverter {
             case Hex:
                 return decToBase(input, BaseType.Hex);
             default:
-                return "0";
+                throw new AssertionError();
         }
     }
 }
