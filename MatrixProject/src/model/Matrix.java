@@ -35,20 +35,28 @@ public class Matrix {
         this.columns = columns;
     }
 
-    public void setFactorValue(int rows, int columns, int value) {
-        matrixValue[rows][columns] = value;
+    public void setFactorValue(int rows, int columns, int value) throws Exception{
+        if (rows > this.rows || columns > this.columns) {
+            throw new Exception("Invalid position in the matrix!");
+        } else {
+            this.matrixValue[rows][columns] = value;
+        }
     }
 
-    public int getFactorValue(int rows, int columns) {
-        return matrixValue[rows][columns];
+    public int getFactorValue(int rows, int columns) throws Exception{
+        if (rows > this.rows || columns > this.columns) {
+            throw new Exception("Invalid position in the matrix!");
+        } else {
+            return this.matrixValue[rows][columns];
+        }
     }
 
 
-    public String displayMatrix() {
+    public String displayMatrix(){
         String ret = "";
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                ret += "[" + getFactorValue(i, j) + "]";
+                ret += "[" + this.matrixValue[i][j] + "]";
             }
             ret += "\n";
         }
