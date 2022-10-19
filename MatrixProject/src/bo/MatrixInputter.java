@@ -18,10 +18,4 @@ public class MatrixInputter {
         }
         return matrix;
     }
-
-    public static void main(String[] args) throws Exception {
-        MatrixInputter matrixInputter = new MatrixInputter();
-        Matrix matrix = matrixInputter.inputMatrix();
-        System.out.println(matrix.displayMatrix());
-    }
 }
