@@ -7,18 +7,21 @@ public class MatrixInputter {
     public MatrixInputter() {
     }
 
-    public Matrix inputMatrix() throws Exception{
-        Matrix matrix1 = new Matrix();
-        int rows = InputUtils.getInt("Enter number of rows: ", "Input number only!", "Input must be in range from 1", 1, Integer.MAX_VALUE);
-        int columns = InputUtils.getInt("Enter number of columns: ", "Input number only!", "Input must be in range from 1", 1, Integer.MAX_VALUE);
-        matrix1.setRows(rows);
-        matrix1.setColumns(columns);
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                matrix1.setFactorValue(i, j, InputUtils.getFactorValue(i, j));
+    public Matrix inputMatrix() throws Exception {
+        int row = InputUtils.getInt("Enter rows: ", "Input number only", "Input must be in range of positive int!", 1, Integer.MAX_VALUE);
+        int column = InputUtils.getInt("Enter rows: ", "Input number only", "Input must be in range of positive int!", 1, Integer.MAX_VALUE);
+        Matrix matrix = new Matrix(row, column);
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                matrix.setFactorValue(i, j, InputUtils.getFactorValue(i, j));
             }
         }
-        return matrix1;
+        return matrix;
     }
 
+    public static void main(String[] args) throws Exception {
+        MatrixInputter matrixInputter = new MatrixInputter();
+        Matrix matrix = matrixInputter.inputMatrix();
+        System.out.println(matrix.displayMatrix());
+    }
 }
