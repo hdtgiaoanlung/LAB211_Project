@@ -2,12 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
-import utils.StringUtils;
-
 public class Student {
 
-    public static String FORMAT_OUTPUT = "%-5s | %-20s | %-10s | %-10s | %-3s \n";
-    public static String HEADER_OUTPUT = String.format(FORMAT_OUTPUT, "id", "student name", "semester", "course name", "total course");
+    public static String FORMAT_OUTPUT = "%-5s | %-20s | %-10s | %-10s | %-3s";
+    public static String HEADER_OUTPUT = String.format(FORMAT_OUTPUT, "Id", "Student Name", "Semester", "Course Name", "Total Course");
     private int id;
     private String studentName;
     private int semester;
@@ -62,13 +60,13 @@ public class Student {
         int netCount = countCourse(courseName.Net);
         int cppCount = countCourse(courseName.Cpp);
         if (javaCount > 0) {
-            ret += String.format(FORMAT_OUTPUT, id, StringUtils.normalFormName(studentName), semester, courseName.Java, javaCount + "\n");
+            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Java, javaCount);
         }
         if (netCount > 0) {
-            ret += String.format(FORMAT_OUTPUT, id, StringUtils.normalFormName(studentName), semester, courseName.Net, netCount + "\n");
+            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Net, netCount);
         }
         if (cppCount > 0) {
-            ret += String.format(FORMAT_OUTPUT, id, StringUtils.normalFormName(studentName), semester, courseName.Cpp, cppCount + "\n");
+            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Cpp, cppCount);
         }
         return ret;
     }

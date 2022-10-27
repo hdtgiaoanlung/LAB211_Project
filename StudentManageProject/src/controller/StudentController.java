@@ -16,8 +16,8 @@ import java.util.Comparator;
  * @author dinht
  */
 public class StudentController {
-    private StudentManager studentManager;
-    private StudentInputter studentInputter;
+    private final StudentManager studentManager;
+    private final StudentInputter studentInputter;
 
     public StudentController() {
         studentManager = new StudentManager();
