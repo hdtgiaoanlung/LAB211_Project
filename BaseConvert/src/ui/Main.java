@@ -12,19 +12,20 @@ public class Main {
                 "3. Hexadecimal\n" +
                 "4. Exit\n";
         do {
-            System.out.println(menu);
-            int originalChoice = InputUtils.getInt("Enter original base: ", "Input number only!", "Input must be in range of [1, 4]", 1, 4);
-            if (originalChoice == 4) {
-                return;
-            }
-            int convertChoice = InputUtils.getInt("Enter convert base: ", "Input number only!", "Input must be in range of [1, 4]", 1, 4);
-            if (convertChoice == 4) {
-                return;
-            }
-            String numString = InputUtils.getNonEmptyString("Enter your original number: ");
             try {
+                System.out.println(menu);
+                int originalChoice = InputUtils.getInt("Enter original base: ", "Input number only!", "Input must be in range of [1, 4]", 1, 4);
+                if (originalChoice == 4) {
+                    return;
+                }
+                int convertChoice = InputUtils.getInt("Enter convert base: ", "Input number only!", "Input must be in range of [1, 4]", 1, 4);
+                if (convertChoice == 4) {
+                    return;
+                }
+                String numString = InputUtils.getNonEmptyString("Enter your original number: ");
+
                 String output = controller.control(originalChoice, convertChoice, numString);
-                System.out.println("Converted String: " + output);
+                System.out.println("Converted Number: " + output);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

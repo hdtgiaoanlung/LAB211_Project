@@ -11,14 +11,14 @@ public class BaseConverter {
     }
 
     private String decToBase(String input, BaseType type) {
-        String ret = "";
+        StringBuilder ret = new StringBuilder();
         int number = Integer.parseInt(InputUtils.removeAllBlank(input));
         while (number != 0) {
             int remainder = number % type.getBaseToInt();
-            ret = BIT_STRING.charAt(remainder) + ret;
+            ret.insert(0, BIT_STRING.charAt(remainder));
             number /= type.getBaseToInt();
         }
-        return ret;
+        return ret.toString();
     }
 
     private String baseToDec(String input, BaseType type) {
