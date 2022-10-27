@@ -3,6 +3,7 @@ package utils;
 import java.util.Scanner;
 
 public class InputUtils {
+
     public static String getStringByRegex(String mess, String formatError, String regex) {
         Scanner sc = new Scanner(System.in);
         while (true) {
@@ -29,14 +30,12 @@ public class InputUtils {
 
     public static String getEmail(String mess) {
         String regex = "^[A-Za-z](.*)([@]{1})(.{2,})(\\.)(.{2,})";
-        String email = getStringByRegex(mess, "Please enter email with format <account name>@<domain>", regex);
-        return email;
+        return getStringByRegex(mess, "Please enter email with format <account name>@<domain>", regex);
     }
 
     public static String getGender(String mess) {
         String regex = "male|female|Male|Female";
-        String gender = getStringByRegex(mess, "Please enter valid gender!", regex);
-        return gender;
+        return getStringByRegex(mess, "Please enter among [male|female|Male|Female]!", regex);
     }
 
     public static boolean pressYNToContinue() {
@@ -51,26 +50,24 @@ public class InputUtils {
 
     public static String normalFormName(String input) {
         input = removeUnnecessaryBlank(input);
-        String temp[] = input.split(" ");
-        input = "";
+        String[] temp = input.split(" ");
+        StringBuilder inputBuilder = new StringBuilder();
         for (int i = 0; i < temp.length; i++) {
-            input += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1);
+            inputBuilder.append(String.valueOf(temp[i].charAt(0)).toUpperCase()).append(temp[i].substring(1));
             if (i < temp.length - 1) {
-                input += " ";
+                inputBuilder.append(" ");
             }
         }
-        return input;
+        return inputBuilder.toString();
     }
 
     public static String getNonEmptyString(String mess) {
         Scanner sc = new Scanner(System.in);
-        String ret = "";
         while (true) {
             System.out.print(mess);
-            ret = sc.nextLine();
+            String ret = sc.nextLine();
             if (ret.equalsIgnoreCase("")) {
                 System.err.println("Please input a non-empty String!!!");
-                continue;
             } else {
                 return ret;
             }

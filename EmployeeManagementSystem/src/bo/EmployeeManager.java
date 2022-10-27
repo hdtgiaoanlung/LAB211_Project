@@ -1,13 +1,13 @@
 package bo;
 
 import entity.Employee;
+import utils.InputUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class EmployeeManager {
-    private ArrayList<Employee> empList;
+    private final ArrayList<Employee> empList;
 
     public EmployeeManager() {
         empList = new ArrayList<>();
@@ -18,20 +18,20 @@ public class EmployeeManager {
         return searchById(id) != -1;
     }
 
-    public boolean addNewEmployee(Employee e) throws Exception {
+    public boolean addNewEmployee(Employee e){
         if (!checkExist(e.getId())) {
             return empList.add(e);
         }
-        throw new Exception("Id is already exists!");
+        return false;
     }
 
-    public ArrayList<Employee> searchByName(String name) throws Exception{
-        if (!name.isEmpty()) {
+    public ArrayList<Employee> searchByName(String name) throws Exception {
+        if (!name.isBlank()) {
             ArrayList<Employee> ret = new ArrayList<>();
-            for (int i = 0; i < empList.size(); i++) {
-                if (empList.get(i).getFirstName().toLowerCase().contains(name.toLowerCase())
-                        || empList.get(i).getLastName().toLowerCase().contains(name.toLowerCase())) {
-                    ret.add(empList.get(i));
+            for (Employee employee : empList) {
+                String fullName = employee.getFirstName() + employee.getLastName();
+                if (fullName.toLowerCase().contains(name)) {
+                    ret.add(employee);
                 }
             }
             return ret;
@@ -39,15 +39,15 @@ public class EmployeeManager {
         throw new Exception("Search name cannot be blank!");
     }
 
-    public Employee removeEmployee(int index) throws Exception{
+    public Employee removeEmployee(int index) throws Exception {
         if (index != -1) {
             return empList.remove(index);
         }
         throw new Exception("Employee not found!");
     }
 
-    public Employee updateEmployee(int index, Employee e) throws Exception{
-        if (index != - 1) {
+    public Employee updateEmployee(int index, Employee e) throws Exception {
+        if (index != -1) {
             return empList.set(index, e);
         }
         throw new Exception("Employee not found!");
@@ -64,21 +64,16 @@ public class EmployeeManager {
 
     public ArrayList<Employee> sortBySalary() {
         ArrayList<Employee> ret = empList;
-        Collections.sort(ret, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee employee, Employee t1) {
-                return employee.getSalary() - t1.getSalary();
-            }
-        });
+        ret.sort(Comparator.comparingInt(Employee::getSalary));
         return ret;
     }
 
     @Override
     public String toString() {
-        String ret = "";
+        StringBuilder ret = new StringBuilder();
         for (Employee e : empList) {
-            ret += e.toString();
+            ret.append(e.toString());
         }
-        return ret;
+        return ret.toString();
     }
 }

@@ -3,16 +3,16 @@ package controller;
 import bo.EmployeeInput;
 import bo.EmployeeManager;
 import entity.Employee;
-import utils.InputUtils;
 
 import java.util.ArrayList;
 
 public class EmployeeController {
     private EmployeeInput employeeInput;
-    private EmployeeManager employeeManager;
+    private final EmployeeManager employeeManager;
 
     public EmployeeController() {
         employeeManager = new EmployeeManager();
+        employeeInput = new EmployeeInput();
     }
 
     public void displayAllEmployee() {
@@ -20,8 +20,7 @@ public class EmployeeController {
         System.out.println(employeeManager);
     }
 
-    public Employee add() throws Exception {
-        employeeInput = new EmployeeInput();
+    public Employee add(){
         Employee e = employeeInput.inputInformation();
         if (employeeManager.addNewEmployee(e)) {
             return e;
@@ -29,7 +28,7 @@ public class EmployeeController {
         return null;
     }
 
-    public Employee update(int id) throws Exception{
+    public Employee update(int id) throws Exception {
         int index = employeeManager.searchById(id);
         if (index != -1) {
             employeeInput = new EmployeeInput();
@@ -39,16 +38,15 @@ public class EmployeeController {
         return null;
     }
 
-    public Employee remove(int id) throws Exception{
+    public Employee remove(int id) throws Exception {
         int index = employeeManager.searchById(id);
         if (index != -1) {
-            Employee e = employeeManager.removeEmployee(index);
-            return e;
+            return employeeManager.removeEmployee(index);
         }
         return null;
     }
 
-    public ArrayList<Employee> search(String name) throws Exception{
+    public ArrayList<Employee> search(String name) throws Exception {
         if (!name.isEmpty()) {
             return employeeManager.searchByName(name);
         }

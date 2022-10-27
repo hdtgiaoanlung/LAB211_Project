@@ -3,7 +3,7 @@ package entity;
 import utils.InputUtils;
 
 public class Employee {
-    public static String FORMAT_OUTPUT = "%-5s | %-20s | %-20s | %-10s | %-4s | %-20s | %-30s | %-50s | %-50s | %-10s \n";
+    public static String FORMAT_OUTPUT = "%-5s | %-20s | %-20s | %-10s | %-4s | %-20s | %-30s | %-50s | %-50s | %-10s";
     public static String HEADER_OUTPUT = String.format(FORMAT_OUTPUT, "id", "firstName", "lastName", "sex", "dob", "phone", "email", "address", "agency", "salary");
 
     private int id;
@@ -103,7 +103,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return String.format(FORMAT_OUTPUT, id + "", InputUtils.normalFormName(firstName), InputUtils.normalFormName(lastName), sex, dob + "", phone, email, address, agency, salary + "");
+        return String.format(FORMAT_OUTPUT, id + "", firstName, lastName, sex, dob + "", phone, email, address, agency, salary + "");
     }
 
 }

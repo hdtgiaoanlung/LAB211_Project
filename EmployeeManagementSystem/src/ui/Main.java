@@ -1,6 +1,5 @@
 package ui;
 
-import bo.EmployeeManager;
 import controller.EmployeeController;
 import entity.Employee;
 import utils.InputUtils;
@@ -10,13 +9,15 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         EmployeeController employeeController = new EmployeeController();
-        String menu = "WELCOME TO EMPLOYEE MANAGER SYSTEM\n"
-                + "1. Add employees\n"
-                + "2. Update employees\n"
-                + "3. Remove employees (by id)\n"
-                + "4. Search employees (by name)\n"
-                + "5. Sort employees by salary\n"
-                + "6. Exit\n";
+        String menu = """
+                WELCOME TO EMPLOYEE MANAGER SYSTEM
+                1. Add employees
+                2. Update employees
+                3. Remove employees (by id)
+                4. Search employees (by name)
+                5. Sort employees by salary
+                6. Exit
+                """;
         do {
             System.out.println(menu);
             int choice = InputUtils.getInt("Enter your choice: ", "Input number only!", "Input must be in range of [1, 6]", 1, 6);
