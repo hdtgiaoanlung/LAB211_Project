@@ -5,10 +5,9 @@ import java.util.Scanner;
 public class InputUtils {
     public static String getStringByRegex(String mess, String error, String regex) {
         Scanner sc = new Scanner(System.in);
-        String output = null;
         while (true) {
             System.out.print(mess);
-            output = sc.nextLine();
+            String output = sc.nextLine();
             if (output.matches(regex)) {
                 return output;
             } else {
@@ -28,12 +27,25 @@ public class InputUtils {
         }
     }
 
-    public static boolean pressYNToContinue(){
+    public static boolean pressYNToContinue() {
         String ret = getStringByRegex("Do you want to continue? (Y/N) ", "Input Y/N only!", "[YNyn]");
         return ret.equalsIgnoreCase("y");
     }
 
-    public static int getFactorValue(int rows, int columns){
-        return getInt("Enter Matrix[" + (rows + 1) + "][" + (columns + 1) + "]", "Input number only!", "Input must be in range of Integer", Integer.MIN_VALUE, Integer.MAX_VALUE);
+    public static int[][] input2DArray(int rows, int column) throws Exception {
+        if (rows < 1 || column < 1) {
+            throw new Exception("Cannot initialize array!");
+        } else {
+            int[][] array = new int[rows][column];
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < column; j++) {
+                    array[i][j] = getInt("Enter matrix [" + (i + 1) + "][" + (j + 1) + "]", "Input number only!", "Input must be in range of Integer", Integer.MIN_VALUE, Integer.MAX_VALUE);
+                }
+            }
+            return array;
+        }
     }
+
+
+
 }

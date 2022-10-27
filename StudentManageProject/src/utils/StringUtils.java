@@ -22,29 +22,16 @@ public class StringUtils {
 
     public static String normalFormName(String input) {
         input = removeUnnecessaryBlank(input);
-        String temp[] = input.split(" ");
-        input = "";
+        String[] temp = input.split(" ");
+        StringBuilder inputBuilder = new StringBuilder();
         for (int i = 0; i < temp.length; i++) {
-            input += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1);
+            inputBuilder.append(String.valueOf(temp[i].charAt(0)).toUpperCase()).append(temp[i].substring(1).toLowerCase());
             if (i < temp.length - 1) {
-                input += " ";
+                inputBuilder.append(" ");
             }
         }
+        input = inputBuilder.toString();
         return input;
-    }
-
-    public static String getNonEmptyString(String mess) {
-        Scanner sc = new Scanner(System.in);
-        String ret = "";
-        while (true) {
-            System.out.println(mess);
-            ret = sc.nextLine();
-            if(ret.equalsIgnoreCase("")){
-                System.err.println("Please input a non empty string");
-            } else {
-                return ret;
-            }
-        }
     }
 
     public static String getStringByRegex(String mess, String error, String regex) {
@@ -52,6 +39,10 @@ public class StringUtils {
         while (true) {
             System.out.print(mess);
             String output = sc.nextLine();
+            if(removeAllBlank(output).isEmpty()) {
+                System.err.println("Input cannot be empty!");
+                continue;
+            }
             if (output.matches(regex)) {
                 return output;
             } else {
@@ -71,12 +62,12 @@ public class StringUtils {
         }
     }
 
-    public static boolean pressYNToContinue(){
+    public static boolean pressYNToContinue() {
         String ret = getStringByRegex("Do you want to continue? (Y/N) ", "Input Y/N only!", "[YNyn]");
         return ret.equalsIgnoreCase("y");
     }
 
-    public static boolean chooseUpdateDelete(){
+    public static boolean chooseUpdateDelete() {
         String choice = StringUtils.getStringByRegex("Update or Delete (U/D)", "Enter U/D only", "[UDud]");
         return choice.equalsIgnoreCase("u");
     }

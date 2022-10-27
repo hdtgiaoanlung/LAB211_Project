@@ -4,8 +4,8 @@ import model.Matrix;
 import utils.InputUtils;
 
 public class MatrixCalculator {
-    public MatrixCalculator() {
 
+    public MatrixCalculator() {
     }
 
     private int[][] addOrSubtract(int[][] arr1, int[][] arr2, boolean isAdding){

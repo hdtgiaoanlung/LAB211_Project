@@ -9,7 +9,6 @@ package bo;
 import java.util.ArrayList;
 
 import model.Student;
-import model.courseName;
 import utils.StringUtils;
 
 /**
@@ -17,19 +16,14 @@ import utils.StringUtils;
  */
 public class StudentManager {
 
-    private ArrayList<Student> studentList;
+    private final ArrayList<Student> studentList;
 
     public StudentManager() {
         studentList = new ArrayList<>();
     }
 
-    public int searchStudentByIdAndSemester(int id, int semester) {
-        for (int i = 0; i < studentList.size(); i++) {
-            if(studentList.get(i).getId() == id && studentList.get(i).getSemester() == semester) {
-                return i;
-            }
-        }
-        return -1;
+    public ArrayList<Student> getStudentList() {
+        return studentList;
     }
 
     public ArrayList<Student> searchById(int id) {
@@ -41,41 +35,40 @@ public class StudentManager {
         }
         return ret;
     }
+
     private int searchStudent(Student s) {
-        int index = searchStudentByIdAndSemester(s.getId(), s.getSemester());
-        if (index == -1)
+        ArrayList<Student> list = searchById(s.getId());
+        if(list.isEmpty()) {
             return -1;
-        else {
-            if (!StringUtils.removeAllBlank(studentList.get(index).getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(s.getStudentName()))) {
-                return -2;
-            } else {
-                if (studentList.get(index).getSemester() == s.getSemester()) {
-                    return index;
-                } else {
-                    return -1;
-                }
+        }
+        if (!StringUtils.removeAllBlank(list.get(0).getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(s.getStudentName()))) {
+            return -2;
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getSemester() == s.getSemester()) {
+                return i;
             }
         }
+        return -1;
     }
 
 
-    public boolean addStudent(Student s){
+    public boolean addStudent(Student s) {
         int index = searchStudent(s);
         if (index == -1) {
             return studentList.add(s);
         }
         if (index == -2) {
             return false;
-        } else {
-            return studentList.get(index).getCourseList().add(s.getCourseList().get(0));
         }
+        return studentList.get(index).getCourseList().add(s.getCourseList().get(0));
     }
 
     public ArrayList<Student> searchStudentByName(String name) {
         ArrayList<Student> ret = new ArrayList<>();
-        for (int i = 0; i < studentList.size(); i++) {
-            if (StringUtils.removeAllBlank(studentList.get(i).getStudentName()).contains(StringUtils.removeAllBlank(name))) {
-                ret.add(studentList.get(i));
+        for (Student student : studentList) {
+            if (StringUtils.removeAllBlank(student.getStudentName()).contains(StringUtils.removeAllBlank(name))) {
+                ret.add(student);
             }
         }
         return ret;
@@ -91,11 +84,11 @@ public class StudentManager {
 
     @Override
     public String toString() {
-        String ret = "";
+        StringBuilder ret = new StringBuilder();
         for (Student s : studentList) {
-            ret += s.displayStudentInfo();
+            ret.append(s.displayStudentInfo());
         }
-        return ret;
+        return ret.toString();
     }
 
 }

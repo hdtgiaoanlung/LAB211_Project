@@ -7,26 +7,28 @@ package controller;
 
 import bo.StudentInputter;
 import bo.StudentManager;
-import utils.StringUtils;
 import model.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 /**
  * @author dinht
  */
 public class StudentController {
-    public StudentManager studentManager;
-    public StudentInputter studentInputter;
+    private StudentManager studentManager;
+    private StudentInputter studentInputter;
 
     public StudentController() {
         studentManager = new StudentManager();
+        studentInputter = new StudentInputter();
+    }
+
+    public StudentManager getStudentManager() {
+        return studentManager;
     }
 
     public Student addNewStudent() {
-        studentInputter = new StudentInputter();
         Student s = studentInputter.inputInformation();
         if (studentManager.addStudent(s)) {
             return s;
@@ -40,16 +42,11 @@ public class StudentController {
 
     public ArrayList<Student> findAndSortStudent(String name) {
         ArrayList<Student> foundStudent = studentManager.searchStudentByName(name);
-        Collections.sort(foundStudent, new Comparator<Student>() {
-            @Override
-            public int compare(Student student, Student t1) {
-                return student.getStudentName().compareTo(t1.getStudentName());
-            }
-        });
+        foundStudent.sort(Comparator.comparing(Student::getStudentName));
         return foundStudent;
     }
 
-    public Student updateStudent(int index) {
+    private Student updateStudent(int index) {
         if (index != -1) {
             return studentManager.updateStudent(index, studentInputter.inputInformation());
         } else {
@@ -57,7 +54,7 @@ public class StudentController {
         }
     }
 
-    public Student deleteStudent(int index) {
+    private Student deleteStudent(int index) {
         if (index != -1) {
             return studentManager.removeStudentById(index);
         } else {

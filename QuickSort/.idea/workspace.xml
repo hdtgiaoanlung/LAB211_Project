@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="18ee4804-b1ea-44fc-8371-cd2508e7d7b5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../BaseConvert/out/production/BaseConvert/bo/BaseConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../BaseConvert/out/production/BaseConvert/bo/BaseConverter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaseConvert/out/production/BaseConvert/controller/BaseConverterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../BaseConvert/out/production/BaseConvert/controller/BaseConverterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaseConvert/out/production/BaseConvert/utils/InputUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../BaseConvert/out/production/BaseConvert/utils/InputUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaseConvert/src/bo/BaseConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BaseConvert/src/bo/BaseConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeManagementSystem/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeManagementSystem/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/bo/MatrixCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/bo/MatrixCalculator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/bo/MatrixInputter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/bo/MatrixInputter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/controller/MatrixControllerSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/controller/MatrixControllerSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/model/Matrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/model/Matrix.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/ui/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/ui/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/utils/InputUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/out/production/MatrixProject/utils/InputUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/src/bo/MatrixInputter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/src/bo/MatrixInputter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/src/controller/MatrixControllerSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/src/controller/MatrixControllerSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/src/model/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/src/model/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/src/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/src/ui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MatrixProject/src/utils/InputUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MatrixProject/src/utils/InputUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/bo/StudentInputter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/bo/StudentInputter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/bo/StudentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/bo/StudentManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/controller/StudentController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/controller/StudentController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/controller/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/controller/StudentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/model/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/model/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/model/courseName$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/model/courseName$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/model/courseName.class" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/model/courseName.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/ui/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/ui/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/utils/StringUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/out/production/StudentManageProject/utils/StringUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/src/bo/StudentInputter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/src/bo/StudentInputter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/src/bo/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/src/bo/StudentManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/src/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/src/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/src/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/src/model/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentManageProject/src/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentManageProject/src/ui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TaskManager/src/bo/TaskInputter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TaskManager/src/bo/TaskInputter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TaskManager/src/utils/InputUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TaskManager/src/utils/InputUtils.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GcDA8GE2kqgEM4NQvhiXxxa7CX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/dinht/Documents/GitHub/LAB211_Project/QuickSort"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="18ee4804-b1ea-44fc-8371-cd2508e7d7b5" name="Changes" comment="" />
+      <created>1666678831359</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666678831359</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,9 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-import model.courseName;
 import utils.StringUtils;
 
 public class Student {
@@ -14,17 +12,10 @@ public class Student {
     private String studentName;
     private int semester;
 
-    private ArrayList<courseName> courseList;
+    private final ArrayList<courseName> courseList;
 
     public Student() {
         courseList = new ArrayList<>();
-    }
-
-    public Student(int id, String studentName, int semester, ArrayList<courseName> courseList) {
-        this.id = id;
-        this.studentName = studentName;
-        this.semester = semester;
-        this.courseList = courseList;
     }
 
     public int getId() {
@@ -71,13 +62,13 @@ public class Student {
         int netCount = countCourse(courseName.Net);
         int cppCount = countCourse(courseName.Cpp);
         if (javaCount > 0) {
-            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Java, javaCount + "\n");
+            ret += String.format(FORMAT_OUTPUT, id, StringUtils.normalFormName(studentName), semester, courseName.Java, javaCount + "\n");
         }
         if (netCount > 0) {
-            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Net, netCount + "\n");
+            ret += String.format(FORMAT_OUTPUT, id, StringUtils.normalFormName(studentName), semester, courseName.Net, netCount + "\n");
         }
         if (cppCount > 0) {
-            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Cpp, cppCount + "\n");
+            ret += String.format(FORMAT_OUTPUT, id, StringUtils.normalFormName(studentName), semester, courseName.Cpp, cppCount + "\n");
         }
         return ret;
     }

@@ -2,9 +2,11 @@ package ui;
 
 import controller.MatrixControllerSystem;
 import model.Matrix;
+import utils.ArrayUtils;
 import utils.InputUtils;
 
 public class Main {
+
     public static void main(String[] args) {
         MatrixControllerSystem matrixControllerSystem = new MatrixControllerSystem();
         String menu = "=========Calculator program==========\n"
@@ -19,15 +21,16 @@ public class Main {
                 switch (choice) {
                     case 1:
                         Matrix res = matrixControllerSystem.addition();
-                        System.out.println(res.displayMatrix());
+                        System.out.println("==========RESULT==========");
+                        ArrayUtils.displayArray(res.getMatrixValue());
                         break;
                     case 2:
                         res = matrixControllerSystem.subtraction();
-                        System.out.println(res.displayMatrix());
+                        ArrayUtils.displayArray(res.getMatrixValue());
                         break;
                     case 3:
                         res = matrixControllerSystem.multiplication();
-                        System.out.println(res.displayMatrix());
+                        ArrayUtils.displayArray(res.getMatrixValue());
                         break;
                     case 4:
                         return;

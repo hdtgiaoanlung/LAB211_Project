@@ -13,6 +13,17 @@ public class Matrix {
         this.rows = rows;
         this.columns = columns;
         this.matrixValue = new int[rows][columns];
+        for (int i = 0; i < rows; i++) {
+            for(int j = 0; j < columns; j++) {
+                this.matrixValue[i][j] = 0;
+            }
+        }
+    }
+
+    public Matrix(int rows, int columns, int[][] matrixValue) {
+        this.rows = rows;
+        this.columns = columns;
+        this.matrixValue = matrixValue;
     }
 
     public int getRows() {
@@ -23,8 +34,12 @@ public class Matrix {
         return columns;
     }
 
-    public int[][] getMatrix() {
+    public int[][] getMatrixValue() {
         return matrixValue;
+    }
+
+    public void setMatrixValue(int[][] arr){
+        this.matrixValue = arr;
     }
 
     public void setRows(int rows) {
@@ -35,31 +50,4 @@ public class Matrix {
         this.columns = columns;
     }
 
-    public void setFactorValue(int rows, int columns, int value) throws Exception{
-        if (rows > this.rows || columns > this.columns) {
-            throw new Exception("Invalid position in the matrix!");
-        } else {
-            this.matrixValue[rows][columns] = value;
-        }
-    }
-
-    public int getFactorValue(int rows, int columns) throws Exception{
-        if (rows > this.rows || columns > this.columns) {
-            throw new Exception("Invalid position in the matrix!");
-        } else {
-            return this.matrixValue[rows][columns];
-        }
-    }
-
-
-    public String displayMatrix(){
-        String ret = "";
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                ret += "[" + this.matrixValue[i][j] + "]";
-            }
-            ret += "\n";
-        }
-        return ret;
-    }
 }

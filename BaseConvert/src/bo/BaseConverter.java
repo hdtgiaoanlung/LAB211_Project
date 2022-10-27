@@ -12,15 +12,11 @@ public class BaseConverter {
 
     private String decToBase(String input, BaseType type) {
         String ret = "";
-        if (input.equals("0")) {
-            return "0";
-        } else {
-            int number = Integer.parseInt(InputUtils.removeAllBlank(input));
-            while (number != 0) {
-                int remainder = number % type.getBaseToInt();
-                ret = BIT_STRING.charAt(remainder) + ret;
-                number /= type.getBaseToInt();
-            }
+        int number = Integer.parseInt(InputUtils.removeAllBlank(input));
+        while (number != 0) {
+            int remainder = number % type.getBaseToInt();
+            ret = BIT_STRING.charAt(remainder) + ret;
+            number /= type.getBaseToInt();
         }
         return ret;
     }
@@ -50,15 +46,9 @@ public class BaseConverter {
             return ret;
         }
         String dec = baseToDec(input, from);
-        switch (to) {
-            case Bin:
-                return decToBase(input, BaseType.Bin);
-            case Dec:
-                return dec;
-            case Hex:
-                return decToBase(input, BaseType.Hex);
-            default:
-                throw new AssertionError();
+        if (to == BaseType.Dec) {
+            return dec;
         }
+        return decToBase(dec, to);
     }
 }

@@ -1,6 +1,7 @@
 package bo;
 
 import model.Matrix;
+import utils.ArrayUtils;
 import utils.InputUtils;
 
 public class MatrixInputter {
@@ -9,13 +10,8 @@ public class MatrixInputter {
 
     public Matrix inputMatrix() throws Exception {
         int row = InputUtils.getInt("Enter rows: ", "Input number only", "Input must be in range of positive int!", 1, Integer.MAX_VALUE);
-        int column = InputUtils.getInt("Enter rows: ", "Input number only", "Input must be in range of positive int!", 1, Integer.MAX_VALUE);
-        Matrix matrix = new Matrix(row, column);
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                matrix.setFactorValue(i, j, InputUtils.getFactorValue(i, j));
-            }
-        }
-        return matrix;
+        int column = InputUtils.getInt("Enter columns: ", "Input number only", "Input must be in range of positive int!", 1, Integer.MAX_VALUE);
+        int[][] matrixValue = InputUtils.input2DArray(row, column);
+        return new Matrix(row, column, matrixValue);
     }
 }
