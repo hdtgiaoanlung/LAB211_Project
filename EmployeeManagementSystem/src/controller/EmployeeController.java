@@ -15,9 +15,8 @@ public class EmployeeController {
         employeeInput = new EmployeeInput();
     }
 
-    public void displayAllEmployee() {
-        System.out.println("List of Employee: ");
-        System.out.println(employeeManager);
+    public EmployeeManager getEmployeeManager() {
+        return employeeManager;
     }
 
     public Employee add(){
@@ -28,17 +27,19 @@ public class EmployeeController {
         return null;
     }
 
-    public Employee update(int id) throws Exception {
+    public Employee update(int id){
         int index = employeeManager.searchById(id);
         if (index != -1) {
             employeeInput = new EmployeeInput();
             Employee e = employeeInput.inputInformation();
-            return employeeManager.updateEmployee(index, e);
+            if(!employeeManager.checkExist(e)) {
+                return employeeManager.updateEmployee(index, e);
+            }
         }
         return null;
     }
 
-    public Employee remove(int id) throws Exception {
+    public Employee remove(int id){
         int index = employeeManager.searchById(id);
         if (index != -1) {
             return employeeManager.removeEmployee(index);
@@ -47,7 +48,7 @@ public class EmployeeController {
     }
 
     public ArrayList<Employee> search(String name) throws Exception {
-        if (!name.isEmpty()) {
+        if (!name.isBlank()) {
             return employeeManager.searchByName(name);
         }
         throw new Exception("Search name cannot be blank");

@@ -13,12 +13,12 @@ public class EmployeeManager {
     }
 
 
-    private boolean checkExist(int id) {
-        return searchById(id) != -1;
+    public boolean checkExist(Employee e) {
+        return searchById(e.getId()) != -1;
     }
 
-    public boolean addNewEmployee(Employee e){
-        if (!checkExist(e.getId())) {
+    public boolean addNewEmployee(Employee e) {
+        if (!checkExist(e)) {
             return empList.add(e);
         }
         return false;
@@ -38,18 +38,18 @@ public class EmployeeManager {
         throw new Exception("Search name cannot be blank!");
     }
 
-    public Employee removeEmployee(int index) throws Exception {
+    public Employee removeEmployee(int index) {
         if (index != -1) {
             return empList.remove(index);
         }
-        throw new Exception("Employee not found!");
+        return null;
     }
 
-    public Employee updateEmployee(int index, Employee e) throws Exception {
+    public Employee updateEmployee(int index, Employee e){
         if (index != -1) {
             return empList.set(index, e);
         }
-        throw new Exception("Employee not found!");
+        return null;
     }
 
     public int searchById(int id) {

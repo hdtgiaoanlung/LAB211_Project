@@ -28,7 +28,7 @@ public class StudentController {
         return studentManager;
     }
 
-    public Student addNewStudent() {
+    public Student addNewStudent() throws Exception {
         Student s = studentInputter.inputInformation();
         if (studentManager.addStudent(s)) {
             return s;
@@ -46,27 +46,23 @@ public class StudentController {
         return foundStudent;
     }
 
-    private Student updateStudent(int index) {
-        if (index != -1) {
-            return studentManager.updateStudent(index, studentInputter.inputInformation());
-        } else {
-            return null;
-        }
+    private Student updateStudent(Student s) throws Exception{
+        Student student = studentInputter.inputInformation();
+        int index = studentManager.getStudentList().indexOf(s);
+        return studentManager.updateStudent(index, student);
     }
 
-    private Student deleteStudent(int index) {
-        if (index != -1) {
-            return studentManager.removeStudentById(index);
-        } else {
-            return null;
+    private Student deleteStudent(Student s) {
+        if (studentManager.removeStudent(s)) {
+            return s;
         }
+        return null;
     }
 
-    public Student updateAndDeleteStudent(int id, boolean updateOrDelete) {
-        if (updateOrDelete) {
-            return updateStudent(id);
-        } else {
-            return deleteStudent(id);
+    public Student updateAndDeleteStudent(Student s, boolean chooseUpdateDelete) throws Exception{
+        if (chooseUpdateDelete) {
+            return updateStudent(s);
         }
+        return deleteStudent(s);
     }
 }

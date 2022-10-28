@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Student {
 
-    public static String FORMAT_OUTPUT = "%-5s | %-20s | %-10s | %-10s | %-3s";
-    public static String HEADER_OUTPUT = String.format(FORMAT_OUTPUT, "Id", "Student Name", "Semester", "Course Name", "Total Course");
+    public static String FORMAT_OUTPUT = "%-5s | %-20s | %-10s | %-10s ";
+    public static String HEADER_OUTPUT = String.format(FORMAT_OUTPUT, "Id", "Student Name", "Semester", "Course Name");
     private int id;
     private String studentName;
     private int semester;
@@ -44,29 +44,16 @@ public class Student {
         return courseList;
     }
 
-    private int countCourse(courseName name) {
-        int count = 0;
-        for (courseName c : courseList) {
-            if (c.equals(name)) {
-                count++;
-            }
-        }
-        return count;
-    }
-
     public String displayStudentInfo() {
         String ret = "";
-        int javaCount = countCourse(courseName.Java);
-        int netCount = countCourse(courseName.Net);
-        int cppCount = countCourse(courseName.Cpp);
-        if (javaCount > 0) {
-            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Java, javaCount);
+        if (courseList.contains(courseName.Java)) {
+            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Java) + "\n";
         }
-        if (netCount > 0) {
-            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Net, netCount);
+        if (courseList.contains(courseName.Net)) {
+            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Net) + "\n";
         }
-        if (cppCount > 0) {
-            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Cpp, cppCount);
+        if (courseList.contains(courseName.Cpp)) {
+            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Cpp) + "\n";
         }
         return ret;
     }

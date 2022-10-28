@@ -34,6 +34,8 @@ public class Main {
                         }
                         break;
                     case 2:
+                        System.out.println("List of Employee: ");
+                        System.out.println(employeeController.getEmployeeManager());
                         int id = InputUtils.getInt("Enter Id of update employee: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
                         Employee update = employeeController.update(id);
                         if (update == null) {
@@ -45,6 +47,8 @@ public class Main {
                         }
                         break;
                     case 3:
+                        System.out.println("List of Employee: ");
+                        System.out.println(employeeController.getEmployeeManager());
                         id = InputUtils.getInt("Enter Id of removed employee: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
                         Employee remove = employeeController.remove(id);
                         if (remove == null) {
@@ -56,7 +60,8 @@ public class Main {
                         }
                         break;
                     case 4:
-                        employeeController.displayAllEmployee();
+                        System.out.println("List of Employee: ");
+                        System.out.println(employeeController.getEmployeeManager());
                         String name = InputUtils.getStringByRegex("Enter search name: ", "Input characters only!", "[A-Za-z ]+");
                         ArrayList<Employee> searchList = employeeController.search(name);
                         if (searchList.size() == 0) {
@@ -82,7 +87,7 @@ public class Main {
                     case 6:
                         return;
                     default:
-                        throw new AssertionError();
+                        throw new RuntimeException("Please input a valid number!");
                 }
             } catch (Exception e) {
                 System.err.println(e.getMessage());

@@ -6,11 +6,13 @@ import utils.InputUtils;
 public class Main {
     public static void main(String[] args) {
         BaseConverterController controller = new BaseConverterController();
-        String menu = "WELCOME TO BASE CONVERTER\n" +
-                "1. Binary\n" +
-                "2. Decimal\n" +
-                "3. Hexadecimal\n" +
-                "4. Exit\n";
+        String menu = """
+                WELCOME TO BASE CONVERTER
+                1. Binary
+                2. Decimal
+                3. Hexadecimal
+                4. Exit
+                """;
         do {
             try {
                 System.out.println(menu);

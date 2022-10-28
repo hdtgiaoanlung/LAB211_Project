@@ -36,32 +36,27 @@ public class StudentManager {
         return ret;
     }
 
-    private int searchStudent(Student s) {
+    private int checkStudent(Student s) {
         ArrayList<Student> list = searchById(s.getId());
-        if(list.isEmpty()) {
-            return -1;
-        }
-        if (!StringUtils.removeAllBlank(list.get(0).getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(s.getStudentName()))) {
-            return -2;
-        }
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getSemester() == s.getSemester()) {
-                return i;
+        if (!list.isEmpty()){
+            if (!StringUtils.removeAllBlank(list.get(0).getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(s.getStudentName()))) {
+                return -2;
+            }
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getSemester() == s.getSemester() && !list.get(i).getCourseList().contains(s.getCourseList().get(0))) {
+                    return i;
+                }
             }
         }
         return -1;
     }
 
-
-    public boolean addStudent(Student s) {
-        int index = searchStudent(s);
+    public boolean addStudent(Student s) throws Exception {
+        int index = checkStudent(s);
         if (index == -1) {
             return studentList.add(s);
         }
-        if (index == -2) {
-            return false;
-        }
-        return studentList.get(index).getCourseList().add(s.getCourseList().get(0));
+        throw new Exception("Cannot add student!");
     }
 
     public ArrayList<Student> searchStudentByName(String name) {
@@ -74,12 +69,15 @@ public class StudentManager {
         return ret;
     }
 
-    public Student updateStudent(int index, Student s) {
-        return studentList.set(index, s);
+    public Student updateStudent(int index, Student s) throws Exception {
+        if (index != -1) {
+            return studentList.set(index, s);
+        }
+        throw new Exception("Update failed!");
     }
 
-    public Student removeStudentById(int index) {
-        return studentList.remove(index);
+    public boolean removeStudent(Student s) {
+        return studentList.remove(s);
     }
 
     @Override
