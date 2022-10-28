@@ -27,5 +27,4 @@ public class StudentInputter {
         s.getCourseList().add(courseName.intToCourseName(StringUtils.getInt("Enter course name: (1: Java; 2:.Net; 3: C/C++)", "Input number only", "Input must be in range of [1, 3]", 1, 3)));
         return s;
     }
-
 }

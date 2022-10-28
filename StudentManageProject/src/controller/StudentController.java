@@ -49,7 +49,10 @@ public class StudentController {
     private Student updateStudent(Student s) throws Exception{
         Student student = studentInputter.inputInformation();
         int index = studentManager.getStudentList().indexOf(s);
-        return studentManager.updateStudent(index, student);
+        if (studentManager.checkStudent(s)) {
+            return studentManager.updateStudent(index, student);
+        }
+        return null;
     }
 
     private Student deleteStudent(Student s) {
