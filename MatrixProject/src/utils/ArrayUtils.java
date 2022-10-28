@@ -1,17 +1,16 @@
 package utils;
 
+import model.Matrix;
 
 public class ArrayUtils {
-    public static void displayArray(int[][] array) {
-        if (array == null) {
-            throw new RuntimeException("Cannot display null array!");
-        }
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                System.out.print("[" + array[i][j] + "]");
+    public static void display2DArray(int[][] array) {
+        int row = array.length;
+        int col = array[0].length;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                System.out.format("[" + array[i][j] + "]");
             }
             System.out.println();
         }
     }
-
 }
