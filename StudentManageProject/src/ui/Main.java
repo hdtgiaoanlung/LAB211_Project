@@ -106,7 +106,7 @@ public class Main {
                         throw new AssertionError();
                 }
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.err.println(e.getMessage());
             }
         } while (StringUtils.pressYNToContinue());
 

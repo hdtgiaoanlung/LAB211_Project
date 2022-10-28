@@ -36,24 +36,23 @@ public class StudentManager {
         return ret;
     }
 
-    private int checkStudent(Student s) {
+    public boolean checkStudent(Student s) {
         ArrayList<Student> list = searchById(s.getId());
-        if (!list.isEmpty()){
+        if (!list.isEmpty()) {
             if (!StringUtils.removeAllBlank(list.get(0).getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(s.getStudentName()))) {
-                return -2;
+                return false;
             }
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getSemester() == s.getSemester() && !list.get(i).getCourseList().contains(s.getCourseList().get(0))) {
-                    return i;
+            for (Student student : list) {
+                if (student.getSemester() == s.getSemester() && student.getCourseList().contains(s.getCourseList().get(0))) {
+                    return false;
                 }
             }
         }
-        return -1;
+        return true;
     }
 
     public boolean addStudent(Student s) throws Exception {
-        int index = checkStudent(s);
-        if (index == -1) {
+        if (checkStudent(s)) {
             return studentList.add(s);
         }
         throw new Exception("Cannot add student!");
