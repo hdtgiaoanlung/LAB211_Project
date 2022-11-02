@@ -36,11 +36,11 @@ public class StudentManager {
         return ret;
     }
 
-    public boolean checkStudent(Student s) {
+    public boolean checkStudent(Student s) throws Exception{
         ArrayList<Student> list = searchById(s.getId());
         if (!list.isEmpty()) {
             if (!StringUtils.removeAllBlank(list.get(0).getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(s.getStudentName()))) {
-                return false;
+                throw new Exception("Same ID cannot have different names!");
             }
             for (Student student : list) {
                 if (student.getSemester() == s.getSemester() && student.getCourseList().contains(s.getCourseList().get(0))) {

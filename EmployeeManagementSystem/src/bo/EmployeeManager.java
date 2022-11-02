@@ -12,16 +12,20 @@ public class EmployeeManager {
         empList = new ArrayList<>();
     }
 
-
-    public boolean checkExist(Employee e) {
-        return searchById(e.getId()) != -1;
+    public int searchById(int id) {
+        for (int i = 0; i < empList.size(); i++) {
+            if (empList.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
     }
 
-    public boolean addNewEmployee(Employee e) {
-        if (!checkExist(e)) {
+    public boolean addNewEmployee(Employee e) throws Exception{
+        if (searchById(e.getId()) == -1) {
             return empList.add(e);
         }
-        return false;
+        throw new Exception("ID is duplicated!");
     }
 
     public ArrayList<Employee> searchByName(String name) throws Exception {
@@ -38,28 +42,22 @@ public class EmployeeManager {
         throw new Exception("Search name cannot be blank!");
     }
 
-    public Employee removeEmployee(int index) {
-        if (index != -1) {
-            return empList.remove(index);
+    public Employee removeEmployee(int id) throws Exception {
+        int index = searchById(id);
+        if (index == -1) {
+            throw new Exception("ID not found");
         }
-        return null;
+        return empList.remove(index);
     }
 
-    public Employee updateEmployee(int index, Employee e){
-        if (index != -1) {
-            return empList.set(index, e);
+    public Employee updateEmployee(int id, Employee e) throws Exception{
+        int index = searchById(id);
+        if (empList.get(index) == null) {
+            throw new Exception("ID not found!");
         }
-        return null;
+        return empList.set(index, e);
     }
 
-    public int searchById(int id) {
-        for (int i = 0; i < empList.size(); i++) {
-            if (empList.get(i).getId() == id) {
-                return i;
-            }
-        }
-        return -1;
-    }
 
     public ArrayList<Employee> sortBySalary() {
         ArrayList<Employee> ret = empList;

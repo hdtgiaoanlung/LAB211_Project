@@ -19,7 +19,7 @@ public class EmployeeController {
         return employeeManager;
     }
 
-    public Employee add(){
+    public Employee add() throws Exception {
         Employee e = employeeInput.inputInformation();
         if (employeeManager.addNewEmployee(e)) {
             return e;
@@ -27,22 +27,19 @@ public class EmployeeController {
         return null;
     }
 
-    public Employee update(int id){
+    public Employee update(int id) throws Exception {
         int index = employeeManager.searchById(id);
         if (index != -1) {
             employeeInput = new EmployeeInput();
             Employee e = employeeInput.inputInformation();
-            if(!employeeManager.checkExist(e)) {
-                return employeeManager.updateEmployee(index, e);
-            }
+            return employeeManager.updateEmployee(id, e);
         }
         return null;
     }
 
-    public Employee remove(int id){
-        int index = employeeManager.searchById(id);
-        if (index != -1) {
-            return employeeManager.removeEmployee(index);
+    public Employee remove(int id) throws Exception {
+        if (id != -1) {
+            return employeeManager.removeEmployee(id);
         }
         return null;
     }

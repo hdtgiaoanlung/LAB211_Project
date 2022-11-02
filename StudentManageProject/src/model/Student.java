@@ -45,16 +45,10 @@ public class Student {
     }
 
     public String displayStudentInfo() {
-        String ret = "";
-        if (courseList.contains(courseName.Java)) {
-            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Java) + "\n";
-        }
-        if (courseList.contains(courseName.Net)) {
-            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Net) + "\n";
-        }
-        if (courseList.contains(courseName.Cpp)) {
-            ret += String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Cpp) + "\n";
-        }
-        return ret;
+        return switch (this.getCourseList().get(0)) {
+            case Java -> String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Java);
+            case Net -> String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Net);
+            case Cpp -> String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Cpp);
+        };
     }
 }

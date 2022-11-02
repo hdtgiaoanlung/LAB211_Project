@@ -6,9 +6,6 @@ import utils.ArrayUtils;
 import utils.InputUtils;
 
 public class Main {
-    public static String ADDITION_BANNER = "==============Addition==============";
-    public static String SUBTRACTION_BANNER = "==============Subtraction==============";
-    public static String MULTIPLY_BANNER = "==============Multiplication==============";
 
     public static void displayResult(int choice, Matrix result, Matrix matrix1, Matrix matrix2) {
         System.out.println("==============Result==============");
@@ -24,7 +21,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
+        String ADDITION_BANNER = "==============Addition==============";
+        String SUBTRACTION_BANNER = "==============Subtraction==============";
+        String MULTIPLY_BANNER = "==============Multiplication==============";
         System.out.println("Welcome to my Calculator Project!");
         String menu = """
                 1.Addition Matrix
