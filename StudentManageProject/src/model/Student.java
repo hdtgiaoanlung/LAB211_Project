@@ -46,9 +46,9 @@ public class Student {
 
     public String displayStudentInfo() {
         return switch (this.getCourseList().get(0)) {
-            case Java -> String.format(FORMAT_OUTPUT, id, studentName, semester, CourseName.Java);
-            case Net -> String.format(FORMAT_OUTPUT, id, studentName, semester, CourseName.Net);
-            case Cpp -> String.format(FORMAT_OUTPUT, id, studentName, semester, CourseName.Cpp);
+            case Java -> String.format(FORMAT_OUTPUT, id, studentName, semester, "Java\n");
+            case Net -> String.format(FORMAT_OUTPUT, id, studentName, semester, ".Net\n");
+            case Cpp -> String.format(FORMAT_OUTPUT, id, studentName, semester, "C/C++\n");
         };
     }
 }

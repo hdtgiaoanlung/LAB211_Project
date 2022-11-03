@@ -5,23 +5,24 @@
  */
 package controller;
 
-import bo.StudentInputter;
+import bo.StudentInput;
 import bo.StudentManager;
 import model.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Map;
 
 /**
  * @author dinht
  */
 public class StudentController {
     private final StudentManager studentManager;
-    private final StudentInputter studentInputter;
+    private final StudentInput studentInput;
 
     public StudentController() {
         studentManager = new StudentManager();
-        studentInputter = new StudentInputter();
+        studentInput = new StudentInput();
     }
 
     public StudentManager getStudentManager() {
@@ -29,7 +30,7 @@ public class StudentController {
     }
 
     public Student addNewStudent() throws Exception {
-        Student s = studentInputter.inputInformation();
+        Student s = studentInput.inputInformation();
         if (studentManager.addStudent(s)) {
             return s;
         }
@@ -47,9 +48,9 @@ public class StudentController {
     }
 
     private Student updateStudent(Student s) throws Exception{
-        Student student = studentInputter.inputInformation();
+        Student student = studentInput.inputInformation();
         int index = studentManager.getStudentList().indexOf(s);
-        if (studentManager.checkStudent(s)) {
+        if (studentManager.checkStudent(student)) {
             return studentManager.updateStudent(index, student);
         }
         return null;
@@ -67,5 +68,14 @@ public class StudentController {
             return updateStudent(s);
         }
         return deleteStudent(s);
+    }
+
+    public String report() {
+        StringBuilder ret = new StringBuilder();
+        Map<String, StudentReport> map = studentManager.report();
+        for (StudentReport studentReport : map.values()) {
+            ret.append(studentReport);
+        }
+        return ret.toString();
     }
 }

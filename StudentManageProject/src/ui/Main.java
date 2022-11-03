@@ -88,9 +88,12 @@ public class Main {
                         }
                         break;
                     case 4:
-                        System.out.println("List of Students: ");
-                        System.out.println(Student.HEADER_OUTPUT);
-                        System.out.println(controller.getStudentManager());
+                        String report = controller.report();
+                        if(report.isBlank()) {
+                            System.err.println("No students to report!");
+                        } else {
+                            System.out.println(report);
+                        }
                         break;
                     case 5:
                         return;

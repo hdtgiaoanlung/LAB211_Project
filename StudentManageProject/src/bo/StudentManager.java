@@ -52,7 +52,7 @@ public class StudentManager {
                 throw new Exception("Same ID cannot have different names!");
             }
             for (Student student : list) {
-                if (student.getSemester() == s.getSemester() && student.getCourseList().contains(s.getCourseList().get(0))) {
+                if (student.getSemester() == s.getSemester() && student.getCourseList().contains(s.getCourseList())) {
                     return false;
                 }
             }
@@ -70,7 +70,7 @@ public class StudentManager {
     public ArrayList<Student> searchStudentByName(String name) {
         ArrayList<Student> ret = new ArrayList<>();
         for (Student student : studentList) {
-            if (StringUtils.removeAllBlank(student.getStudentName()).contains(StringUtils.removeAllBlank(name))) {
+            if (StringUtils.removeAllBlank(student.getStudentName().toLowerCase()).contains(StringUtils.removeAllBlank(name).toLowerCase())) {
                 ret.add(student);
             }
         }

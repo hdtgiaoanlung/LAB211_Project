@@ -11,11 +11,10 @@ import utils.StringUtils;
 /**
  * @author dinht
  */
-public class StudentInputter {
-
+public class StudentInput {
     private Student s;
 
-    public StudentInputter() {
+    public StudentInput() {
         s = new Student();
     }
 
