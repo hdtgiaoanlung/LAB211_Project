@@ -7,8 +7,11 @@ package bo;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.Student;
+import model.StudentReport;
+import model.CourseName;
 import utils.StringUtils;
 
 /**
@@ -22,11 +25,8 @@ public class StudentManager {
         studentList = new ArrayList<>();
     }
 
-    public ArrayList<Student> getStudentList() {
-        return studentList;
-    }
 
-    public ArrayList<Student> searchById(int id) {
+    public ArrayList<Student> getStudentListById(int id) {
         ArrayList<Student> ret = new ArrayList<>();
         for (Student s : studentList) {
             if (s.getId() == id) {
@@ -36,8 +36,17 @@ public class StudentManager {
         return ret;
     }
 
-    public boolean checkStudent(Student s) throws Exception{
-        ArrayList<Student> list = searchById(s.getId());
+    public int searchById(int id) {
+        for (int i = 0; i < studentList.size(); i++) {
+            if (studentList.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public boolean checkStudent(Student s) throws Exception {
+        ArrayList<Student> list = getStudentListById(s.getId());
         if (!list.isEmpty()) {
             if (!StringUtils.removeAllBlank(list.get(0).getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(s.getStudentName()))) {
                 throw new Exception("Same ID cannot have different names!");
@@ -68,15 +77,43 @@ public class StudentManager {
         return ret;
     }
 
-    public Student updateStudent(int index, Student s) throws Exception {
+    public Student updateStudent(int id, Student s) throws Exception {
+        if (s == null) {
+            throw new Exception("Student cannot bu null!");
+        }
+        int index = searchById(id);
         if (index != -1) {
             return studentList.set(index, s);
         }
-        throw new Exception("Update failed!");
+        throw new Exception("Student not found!");
     }
 
     public boolean removeStudent(Student s) {
         return studentList.remove(s);
+    }
+
+    public ArrayList<Student> getStudentList() throws Exception {
+        if (studentList.isEmpty()) {
+            throw new Exception("List empty!");
+        }
+        return studentList;
+    }
+
+    public HashMap<String, StudentReport> report() {
+        HashMap<String, StudentReport> ret = new HashMap<>();
+        for (Student s : studentList) {
+            ArrayList<CourseName> courseName = s.getCourseList();
+            for (CourseName course : courseName) {
+                String key = s.getId() + "|" + course;
+                StudentReport sr = ret.get(key);
+                if (sr == null) {
+                    sr = new StudentReport(s.getId(), s.getStudentName(), course.toString(), 0);
+                    ret.put(key, sr);
+                }
+                sr.setCount(sr.getCount() + 1);
+            }
+        }
+        return ret;
     }
 
     @Override
@@ -87,5 +124,6 @@ public class StudentManager {
         }
         return ret.toString();
     }
+
 
 }

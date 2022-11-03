@@ -1,6 +1,7 @@
 package bo;
 
 import entity.Employee;
+import utils.InputUtils;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,26 +22,13 @@ public class EmployeeManager {
         return -1;
     }
 
-    public boolean addNewEmployee(Employee e) throws Exception{
+    public boolean addNewEmployee(Employee e) throws Exception {
         if (searchById(e.getId()) == -1) {
             return empList.add(e);
         }
         throw new Exception("ID is duplicated!");
     }
 
-    public ArrayList<Employee> searchByName(String name) throws Exception {
-        if (!name.isBlank()) {
-            ArrayList<Employee> ret = new ArrayList<>();
-            for (Employee employee : empList) {
-                String fullName = employee.getFirstName() + employee.getLastName();
-                if (fullName.toLowerCase().contains(name)) {
-                    ret.add(employee);
-                }
-            }
-            return ret;
-        }
-        throw new Exception("Search name cannot be blank!");
-    }
 
     public Employee removeEmployee(int id) throws Exception {
         int index = searchById(id);
@@ -50,20 +38,37 @@ public class EmployeeManager {
         return empList.remove(index);
     }
 
-    public Employee updateEmployee(int id, Employee e) throws Exception{
+    public Employee updateEmployee(int id, Employee e) throws Exception {
         int index = searchById(id);
+        if (searchById(e.getId()) != -1 && e.getId() != empList.get(index).getId()) {
+            throw new Exception("Update ID duplicated!");
+        }
         if (empList.get(index) == null) {
             throw new Exception("ID not found!");
         }
         return empList.set(index, e);
     }
 
+    public ArrayList<Employee> searchByName(String name) throws Exception {
+        if (!name.isBlank()) {
+            ArrayList<Employee> ret = new ArrayList<>();
+            for (Employee employee : empList) {
+                String fullName = employee.getFirstName() + employee.getLastName();
+                if (InputUtils.removeAllBlank(fullName).toLowerCase().contains(name.toLowerCase())) {
+                    ret.add(employee);
+                }
+            }
+            return ret;
+        }
+        throw new Exception("Search name cannot be blank!");
+    }
 
     public ArrayList<Employee> sortBySalary() {
         ArrayList<Employee> ret = empList;
         ret.sort(Comparator.comparingInt(Employee::getSalary));
         return ret;
     }
+
 
     @Override
     public String toString() {
@@ -72,5 +77,9 @@ public class EmployeeManager {
             ret.append(e.toString());
         }
         return ret.toString();
+    }
+
+    public ArrayList<Employee> getEmpList() {
+        return empList;
     }
 }

@@ -34,42 +34,54 @@ public class Main {
                         }
                         break;
                     case 2:
-                        System.out.println("List of Employee: ");
-                        System.out.println(employeeController.getEmployeeManager());
-                        int id = InputUtils.getInt("Enter Id of update employee: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
-                        Employee update = employeeController.update(id);
-                        if (update == null) {
-                            System.err.println("Update fail");
+                        if (employeeController.getEmployeeManager().getEmpList().isEmpty()) {
+                            System.err.println("No employees to display!");
                         } else {
-                            System.err.println("Update Success");
-                            System.err.println(Employee.HEADER_OUTPUT);
-                            System.err.println(update);
+                            System.out.println("List of Employee: ");
+                            System.out.println(employeeController.getEmployeeList());
+                            int id = InputUtils.getInt("Enter Id of update employee: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
+                            Employee update = employeeController.update(id);
+                            if (update == null) {
+                                System.err.println("Update fail");
+                            } else {
+                                System.err.println("Update Success");
+                                System.err.println(Employee.HEADER_OUTPUT);
+                                System.err.println(update);
+                            }
                         }
                         break;
                     case 3:
-                        System.out.println("List of Employee: ");
-                        System.out.println(employeeController.getEmployeeManager());
-                        id = InputUtils.getInt("Enter Id of removed employee: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
-                        Employee remove = employeeController.remove(id);
-                        if (remove == null) {
-                            System.err.println("Delete fail");
+                        if (employeeController.getEmployeeManager().getEmpList().isEmpty()) {
+                            System.err.println("No employees to display!");
                         } else {
-                            System.err.println("Remove Success");
-                            System.err.println(Employee.HEADER_OUTPUT);
-                            System.err.println(remove);
+                            System.out.println("List of Employee: ");
+                            System.out.println(employeeController.getEmployeeList());
+                            int id = InputUtils.getInt("Enter Id of removed employee: ", "Input number only!", "Input out of range", 1, Integer.MAX_VALUE);
+                            Employee remove = employeeController.remove(id);
+                            if (remove == null) {
+                                System.err.println("Delete fail");
+                            } else {
+                                System.err.println("Remove Success");
+                                System.err.println(Employee.HEADER_OUTPUT);
+                                System.err.println(remove);
+                            }
                         }
                         break;
                     case 4:
-                        System.out.println("List of Employee: ");
-                        System.out.println(employeeController.getEmployeeManager());
-                        String name = InputUtils.getStringByRegex("Enter search name: ", "Input characters only!", "[A-Za-z ]+");
-                        ArrayList<Employee> searchList = employeeController.search(name);
-                        if (searchList.size() == 0) {
-                            System.err.println("No employees found!");
+                        if(employeeController.getEmployeeManager().getEmpList().isEmpty()) {
+                            System.err.println("No employee to display!");
                         } else {
-                            System.err.println(Employee.HEADER_OUTPUT);
-                            for (Employee e : searchList) {
-                                System.err.println(e.toString());
+                            System.out.println("List of Employee: ");
+                            System.out.println(employeeController.getEmployeeList());
+                            String name = InputUtils.getStringByRegex("Enter search name: ", "Input characters only!", "[A-Za-z ]+");
+                            ArrayList<Employee> searchList = employeeController.search(name);
+                            if (searchList.size() == 0) {
+                                System.err.println("No employees found!");
+                            } else {
+                                System.err.println(Employee.HEADER_OUTPUT);
+                                for (Employee e : searchList) {
+                                    System.err.println(e.toString());
+                                }
                             }
                         }
                         break;
@@ -78,9 +90,9 @@ public class Main {
                         if (sortedList.isEmpty()) {
                             System.err.println("No employees to display!");
                         } else {
-                            System.err.println(Employee.HEADER_OUTPUT);
+                            System.out.println(Employee.HEADER_OUTPUT);
                             for (Employee e : sortedList) {
-                                System.err.println(e.toString());
+                                System.out.println(e.toString());
                             }
                         }
                         break;

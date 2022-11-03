@@ -37,7 +37,7 @@ public class StudentController {
     }
 
     public ArrayList<Student> getSearchStudentById(int id) {
-        return studentManager.searchById(id);
+        return studentManager.getStudentListById(id);
     }
 
     public ArrayList<Student> findAndSortStudent(String name) {

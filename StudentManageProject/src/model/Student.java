@@ -10,7 +10,7 @@ public class Student {
     private String studentName;
     private int semester;
 
-    private final ArrayList<courseName> courseList;
+    private final ArrayList<CourseName> courseList;
 
     public Student() {
         courseList = new ArrayList<>();
@@ -40,15 +40,15 @@ public class Student {
         this.semester = semester;
     }
 
-    public ArrayList<courseName> getCourseList() {
+    public ArrayList<CourseName> getCourseList() {
         return courseList;
     }
 
     public String displayStudentInfo() {
         return switch (this.getCourseList().get(0)) {
-            case Java -> String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Java);
-            case Net -> String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Net);
-            case Cpp -> String.format(FORMAT_OUTPUT, id, studentName, semester, courseName.Cpp);
+            case Java -> String.format(FORMAT_OUTPUT, id, studentName, semester, CourseName.Java);
+            case Net -> String.format(FORMAT_OUTPUT, id, studentName, semester, CourseName.Net);
+            case Cpp -> String.format(FORMAT_OUTPUT, id, studentName, semester, CourseName.Cpp);
         };
     }
 }

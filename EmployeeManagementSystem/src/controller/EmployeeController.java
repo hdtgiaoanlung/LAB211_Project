@@ -19,6 +19,14 @@ public class EmployeeController {
         return employeeManager;
     }
 
+    public String getEmployeeList() {
+        StringBuilder ret = new StringBuilder();
+        for(Employee e : employeeManager.getEmpList()) {
+            ret.append(e.toString());
+        }
+        return ret.toString();
+    }
+
     public Employee add() throws Exception {
         Employee e = employeeInput.inputInformation();
         if (employeeManager.addNewEmployee(e)) {

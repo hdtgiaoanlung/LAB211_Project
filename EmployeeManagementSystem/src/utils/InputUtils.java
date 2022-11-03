@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class InputUtils {
 
+    public static String removeAllBlank(String input) {
+        return input.trim().replaceAll("\\s+", "");
+    }
+
     public static String getStringByRegex(String mess, String formatError, String regex) {
         Scanner sc = new Scanner(System.in);
         while (true) {

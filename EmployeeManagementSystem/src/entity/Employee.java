@@ -103,7 +103,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return String.format(FORMAT_OUTPUT, id + "", firstName, lastName, sex, dob + "", phone, email, address, agency, salary + "");
+        return String.format(FORMAT_OUTPUT, id + "", firstName, lastName, sex, dob + "", phone, email, address, agency, salary + "") + "\n";
     }
 
 }
