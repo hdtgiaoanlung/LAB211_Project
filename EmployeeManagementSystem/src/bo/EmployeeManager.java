@@ -53,7 +53,7 @@ public class EmployeeManager {
         if (!name.isBlank()) {
             ArrayList<Employee> ret = new ArrayList<>();
             for (Employee employee : empList) {
-                String fullName = employee.getFirstName() + employee.getLastName();
+                String fullName = employee.getLastName() + employee.getFirstName();
                 if (InputUtils.removeAllBlank(fullName).toLowerCase().contains(name.toLowerCase())) {
                     ret.add(employee);
                 }
