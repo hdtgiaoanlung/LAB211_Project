@@ -42,7 +42,7 @@ public class Main {
                         } else {
                             System.err.println("Add Success");
                             System.err.println(Student.HEADER_OUTPUT);
-                            System.err.println(add.displayStudentInfo());
+                            System.err.println(add.getDisplayStudentInfo());
                         }
                         break;
                     case 2:
@@ -53,43 +53,43 @@ public class Main {
                         } else {
                             System.out.println(Student.HEADER_OUTPUT);
                             for (Student s : foundStudent) {
-                                System.out.println(s.displayStudentInfo());
+                                System.out.println(s.getDisplayStudentInfo());
                             }
                         }
                         break;
                     case 3:
-                        System.out.println("List of Students: ");
-                        System.out.println(Student.HEADER_OUTPUT);
-                        System.out.println(controller.getStudentManager());
-                        int id = StringUtils.getInt("Enter student ID to update/delete: ", "Input number only!", "Input must be in range", 1, Integer.MAX_VALUE);
-                        ArrayList<Student> searchList = controller.getSearchStudentById(id);
-                        if (searchList.isEmpty()) {
-                            System.err.println("No Students found!");
+                        if (controller.displayAllStudent() == null) {
+                            System.err.println("List empty!");
                         } else {
-                            for (int i = 0; i < searchList.size(); i++) {
-                                System.out.println("No." + (i + 1));
-                                System.out.println(searchList.get(i).displayStudentInfo());
-                            }
-                            int index = StringUtils.getInt("Enter No. of student to update/delete: ", "Input number only!", "Input must be in range", 1, searchList.size());
-                            Student target = searchList.get(index - 1);
-                            boolean chooseUpdateDelete = StringUtils.chooseUpdateDelete();
-                            Student s = controller.updateAndDeleteStudent(target, chooseUpdateDelete);
-                            if (s == null) {
-                                System.err.println("Update/Delete fail!");
+                            int id = StringUtils.getInt("Enter student ID to update/delete: ", "Input number only!", "Input must be in range", 1, Integer.MAX_VALUE);
+                            ArrayList<Student> searchList = controller.getSearchStudentById(id);
+                            if (searchList.isEmpty()) {
+                                System.err.println("No Students found!");
                             } else {
-                                if (chooseUpdateDelete) {
-                                    System.err.println("Update Success");
-                                    System.err.println(s.displayStudentInfo());
+                                for (int i = 0; i < searchList.size(); i++) {
+                                    System.out.println("No." + (i + 1));
+                                    System.out.println(searchList.get(i).getDisplayStudentInfo());
+                                }
+                                int index = StringUtils.getInt("Enter No. of student to update/delete: ", "Input number only!", "Input must be in range", 1, searchList.size());
+                                Student updateStudent = searchList.get(index - 1);
+                                boolean chooseUpdateDelete = StringUtils.chooseUpdateDelete();
+                                Student s = controller.updateAndDeleteStudent(updateStudent, chooseUpdateDelete);
+                                if (s == null) {
+                                    System.err.println("Update/Delete fail!");
                                 } else {
-                                    System.err.println("Delete Success");
-                                    System.err.println(s.displayStudentInfo());
+                                    if (chooseUpdateDelete) {
+                                        System.err.println("Update Success");
+                                    } else {
+                                        System.err.println("Delete Success");
+                                    }
+                                    System.err.println(s.getDisplayStudentInfo());
                                 }
                             }
                         }
                         break;
                     case 4:
                         String report = controller.report();
-                        if(report.isBlank()) {
+                        if (report.isBlank()) {
                             System.err.println("No students to report!");
                         } else {
                             System.out.println(report);

@@ -1,19 +1,17 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Student {
 
-    public static String FORMAT_OUTPUT = "%-5s | %-20s | %-10s | %-10s ";
+    public static String FORMAT_OUTPUT = "%-15s | %-15s | %-15s | %-10s ";
     public static String HEADER_OUTPUT = String.format(FORMAT_OUTPUT, "Id", "Student Name", "Semester", "Course Name");
     private int id;
     private String studentName;
     private int semester;
 
-    private final ArrayList<CourseName> courseList;
+    private CourseName courseName;
 
     public Student() {
-        courseList = new ArrayList<>();
+
     }
 
     public int getId() {
@@ -40,15 +38,15 @@ public class Student {
         this.semester = semester;
     }
 
-    public ArrayList<CourseName> getCourseList() {
-        return courseList;
+    public CourseName getCourseName() {
+        return courseName;
     }
 
-    public String displayStudentInfo() {
-        return switch (this.getCourseList().get(0)) {
-            case Java -> String.format(FORMAT_OUTPUT, id, studentName, semester, "Java\n");
-            case Net -> String.format(FORMAT_OUTPUT, id, studentName, semester, ".Net\n");
-            case Cpp -> String.format(FORMAT_OUTPUT, id, studentName, semester, "C/C++\n");
-        };
+    public void setCourseName(CourseName courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getDisplayStudentInfo() {
+        return String.format(FORMAT_OUTPUT, id, studentName, semester, courseName);
     }
 }

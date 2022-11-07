@@ -7,10 +7,10 @@ package controller;
 
 import bo.StudentInput;
 import bo.StudentManager;
-import model.*;
+import model.Student;
+import model.StudentReport;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Map;
 
 /**
@@ -25,8 +25,15 @@ public class StudentController {
         studentInput = new StudentInput();
     }
 
-    public StudentManager getStudentManager() {
-        return studentManager;
+    public String displayAllStudent() {
+        StringBuilder ret = new StringBuilder();
+        if (studentManager.getStudentList().isEmpty()) {
+            return null;
+        }
+        for (Student s : studentManager.getStudentList()) {
+            ret.append(s.getDisplayStudentInfo()).append("\n");
+        }
+        return ret.toString();
     }
 
     public Student addNewStudent() throws Exception {
@@ -42,18 +49,12 @@ public class StudentController {
     }
 
     public ArrayList<Student> findAndSortStudent(String name) {
-        ArrayList<Student> foundStudent = studentManager.searchStudentByName(name);
-        foundStudent.sort(Comparator.comparing(Student::getStudentName));
-        return foundStudent;
+        return studentManager.findAndSortByName(name);
     }
 
-    private Student updateStudent(Student s) throws Exception{
-        Student student = studentInput.inputInformation();
-        int index = studentManager.getStudentList().indexOf(s);
-        if (studentManager.checkStudent(student)) {
-            return studentManager.updateStudent(index, student);
-        }
-        return null;
+    private Student updateStudent(Student updateStudent) throws Exception {
+        Student newStudent = studentInput.inputInformation();
+        return studentManager.updateStudent(updateStudent, newStudent);
     }
 
     private Student deleteStudent(Student s) {
@@ -63,7 +64,7 @@ public class StudentController {
         return null;
     }
 
-    public Student updateAndDeleteStudent(Student s, boolean chooseUpdateDelete) throws Exception{
+    public Student updateAndDeleteStudent(Student s, boolean chooseUpdateDelete) throws Exception {
         if (chooseUpdateDelete) {
             return updateStudent(s);
         }
@@ -78,4 +79,5 @@ public class StudentController {
         }
         return ret.toString();
     }
+
 }

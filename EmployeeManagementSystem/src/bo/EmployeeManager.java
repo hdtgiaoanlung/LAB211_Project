@@ -64,8 +64,16 @@ public class EmployeeManager {
     }
 
     public ArrayList<Employee> sortBySalary() {
-        ArrayList<Employee> ret = empList;
-        ret.sort(Comparator.comparingInt(Employee::getSalary));
+        ArrayList<Employee> ret = new ArrayList<>(empList);
+        ret.sort(new Comparator<>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                if (o1.getSalary() == o2.getSalary()) {
+                    return o1.getId() - o2.getId();
+                }
+                return o1.getSalary() - o2.getSalary();
+            }
+        });
         return ret;
     }
 

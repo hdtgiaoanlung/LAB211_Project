@@ -68,7 +68,7 @@ public class Main {
                         }
                         break;
                     case 4:
-                        if(employeeController.getEmployeeManager().getEmpList().isEmpty()) {
+                        if (employeeController.getEmployeeManager().getEmpList().isEmpty()) {
                             System.err.println("No employee to display!");
                         } else {
                             System.out.println("List of Employee: ");

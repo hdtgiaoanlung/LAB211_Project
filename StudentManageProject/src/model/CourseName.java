@@ -12,4 +12,16 @@ public enum CourseName {
         };
     }
 
+    public String courseNameToString() {
+        return switch (this) {
+            case Java -> "Java";
+            case Net -> ".Net";
+            case Cpp -> "C/C++";
+        };
+    }
+
+    @Override
+    public String toString() {
+        return courseNameToString();
+    }
 }

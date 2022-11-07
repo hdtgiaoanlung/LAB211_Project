@@ -39,7 +39,7 @@ public class StringUtils {
         while (true) {
             System.out.print(mess);
             String output = sc.nextLine();
-            if(removeAllBlank(output).isEmpty()) {
+            if (removeAllBlank(output).isEmpty()) {
                 System.err.println("Input cannot be empty!");
                 continue;
             }

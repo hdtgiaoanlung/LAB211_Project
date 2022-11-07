@@ -21,7 +21,7 @@ public class EmployeeController {
 
     public String getEmployeeList() {
         StringBuilder ret = new StringBuilder();
-        for(Employee e : employeeManager.getEmpList()) {
+        for (Employee e : employeeManager.getEmpList()) {
             ret.append(e.toString());
         }
         return ret.toString();

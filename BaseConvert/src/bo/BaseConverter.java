@@ -46,9 +46,6 @@ public class BaseConverter {
             return ret;
         }
         String dec = baseToDec(input, from);
-        if (to == BaseType.Dec) {
-            return dec;
-        }
         return decToBase(dec, to);
     }
 }

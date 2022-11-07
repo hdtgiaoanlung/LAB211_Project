@@ -7,6 +7,7 @@ package bo;
 
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import model.Student;
@@ -36,38 +37,27 @@ public class StudentManager {
         return ret;
     }
 
-    public int searchById(int id) {
-        for (int i = 0; i < studentList.size(); i++) {
-            if (studentList.get(i).getId() == id) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public boolean checkStudent(Student s) throws Exception {
+    public void checkStudent(Student s) throws Exception {
         ArrayList<Student> list = getStudentListById(s.getId());
-        if (!list.isEmpty()) {
-            if (!StringUtils.removeAllBlank(list.get(0).getStudentName()).equalsIgnoreCase(StringUtils.removeAllBlank(s.getStudentName()))) {
+
+
+        for (Student student : list) {
+            if (!StringUtils.normalFormName(student.getStudentName())
+                    .equalsIgnoreCase(StringUtils.normalFormName(s.getStudentName()))) {
                 throw new Exception("Same ID cannot have different names!");
             }
-            for (Student student : list) {
-                if (student.getSemester() == s.getSemester() && student.getCourseList().contains(s.getCourseList())) {
-                    return false;
-                }
+            if (student.getSemester() == s.getSemester() && student.getCourseName().equals(s.getCourseName())) {
+                throw new Exception("Information duplicated!");
             }
         }
-        return true;
     }
 
     public boolean addStudent(Student s) throws Exception {
-        if (checkStudent(s)) {
-            return studentList.add(s);
-        }
-        throw new Exception("Cannot add student!");
+        checkStudent(s);
+        return studentList.add(s);
     }
 
-    public ArrayList<Student> searchStudentByName(String name) {
+    private ArrayList<Student> searchStudentByName(String name) {
         ArrayList<Student> ret = new ArrayList<>();
         for (Student student : studentList) {
             if (StringUtils.removeAllBlank(student.getStudentName().toLowerCase()).contains(StringUtils.removeAllBlank(name).toLowerCase())) {
@@ -77,41 +67,39 @@ public class StudentManager {
         return ret;
     }
 
-    public Student updateStudent(int id, Student s) throws Exception {
-        if (s == null) {
-            throw new Exception("Student cannot bu null!");
+    public ArrayList<Student> findAndSortByName(String name) {
+        ArrayList<Student> ret = searchStudentByName(name);
+        ret.sort(Comparator.comparing(Student::getStudentName));
+        return ret;
+    }
+
+    public Student updateStudent(Student updateStudent, Student newStudent) throws Exception {
+        if (newStudent == null) {
+            throw new Exception("Student cannot be null!");
         }
-        int index = searchById(id);
-        if (index != -1) {
-            return studentList.set(index, s);
-        }
-        throw new Exception("Student not found!");
+        checkStudent(newStudent);
+        return studentList.set(studentList.indexOf(updateStudent), newStudent);
     }
 
     public boolean removeStudent(Student s) {
         return studentList.remove(s);
     }
 
-    public ArrayList<Student> getStudentList() throws Exception {
-        if (studentList.isEmpty()) {
-            throw new Exception("List empty!");
-        }
+    public ArrayList<Student> getStudentList() {
         return studentList;
     }
 
     public HashMap<String, StudentReport> report() {
         HashMap<String, StudentReport> ret = new HashMap<>();
         for (Student s : studentList) {
-            ArrayList<CourseName> courseName = s.getCourseList();
-            for (CourseName course : courseName) {
-                String key = s.getId() + "|" + course;
-                StudentReport sr = ret.get(key);
-                if (sr == null) {
-                    sr = new StudentReport(s.getId(), s.getStudentName(), course.toString(), 0);
-                    ret.put(key, sr);
-                }
-                sr.setCount(sr.getCount() + 1);
+            CourseName course = s.getCourseName();
+            String key = s.getId() + "|" + course.courseNameToString();
+            StudentReport sr = ret.get(key);
+            if (sr == null) {
+                sr = new StudentReport(s.getId(), s.getStudentName(), course.courseNameToString(), 0);
+                ret.put(key, sr);
             }
+            sr.setCount(sr.getCount() + 1);
         }
         return ret;
     }
@@ -120,7 +108,7 @@ public class StudentManager {
     public String toString() {
         StringBuilder ret = new StringBuilder();
         for (Student s : studentList) {
-            ret.append(s.displayStudentInfo());
+            ret.append(s.getDisplayStudentInfo());
         }
         return ret.toString();
     }
