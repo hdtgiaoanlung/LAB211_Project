@@ -8,17 +8,9 @@ import bo.LinearSearch;
 import utils.ArrayUtils;
 import utils.NumberUtils;
 
-/**
- *
- * @author Administrator
- */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
         int len = NumberUtils.inputInt("Enter the length of the array: ");
         int[] arr = ArrayUtils.randomIntArray(len, 0, 10);
         
