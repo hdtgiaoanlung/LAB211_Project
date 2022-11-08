@@ -25,7 +25,6 @@ public class Main {
                     return;
                 }
                 String numString = InputUtils.getNonEmptyString("Enter your original number: ");
-
                 String output = controller.control(originalChoice, convertChoice, numString);
                 System.out.println("Converted Number: " + output);
             } catch (Exception e) {

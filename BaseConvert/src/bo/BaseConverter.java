@@ -32,20 +32,17 @@ public class BaseConverter {
 
     public String convert(String input, BaseType from, BaseType to) throws Exception {
         input = InputUtils.removeAllBlank(input).toUpperCase();
+        String ret = input.replaceAll("^0+", "");
+        if (ret.isEmpty()) {
+            return "0";
+        }
         String format = BIT_STRING.substring(0, from.getBaseToInt());
         for (int i = 0; i < input.length(); i++) {
             if (!format.contains(input.charAt(i) + "")) {
                 throw new Exception("Invalid Input! Must match type of " + from);
             }
         }
-        if (from == to) {
-            String ret = input.replaceAll("^0+", "");
-            if (ret.isEmpty()) {
-                return "0";
-            }
-            return ret;
-        }
-        String dec = baseToDec(input, from);
+        String dec = baseToDec(ret, from);
         return decToBase(dec, to);
     }
 }
