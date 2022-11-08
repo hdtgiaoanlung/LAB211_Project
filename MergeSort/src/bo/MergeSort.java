@@ -1,18 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package bo;
 
 import utils.ArrayUtils;
 
-/**
- *
- * @author Administrator
- */
 public class MergeSort {
 
-    private int[] arr;
+    private final int[] arr;
 
     public MergeSort(int[] arr) {
         this.arr = arr;
@@ -25,9 +18,7 @@ public class MergeSort {
         int[] leftArr = new int[len1];
         int[] rightArr = new int[len2];
 
-        for (int i = 0; i < len1; i++) {
-            leftArr[i] = arr[left + i];
-        }
+        System.arraycopy(arr, left, leftArr, 0, len1);
         for (int j = 0; j < len2; j++) {
             rightArr[j] = arr[mid + j + 1];
         }
@@ -72,7 +63,7 @@ public class MergeSort {
         if(!sortOnOriginal){
             array = ArrayUtils.cloneArray(arr);
         }
-        sort(isAsc, arr, 0, arr.length - 1);
+        sort(isAsc, array, 0, array.length - 1);
         return array;
     }
 }
