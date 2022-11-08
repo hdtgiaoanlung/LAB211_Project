@@ -4,10 +4,9 @@
  */
 package bo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import utils.ArrayUtils;
+
+import java.util.Arrays;
 
 /**
  *
@@ -15,21 +14,23 @@ import utils.ArrayUtils;
  */
 public class BinarySearch {
 
-    private int[] arr;
+    private final int[] arr;
+    private final int[] cloneArr;
 
     public BinarySearch(int[] arr) {
         this.arr = arr;
+        cloneArr = ArrayUtils.cloneArray(arr);
+        Arrays.sort(cloneArr);
     }
 
-    private int search(int[] array, int searchValue) {
-        Arrays.sort(array);
-        int low = 0, high = array.length - 1;
+    public int search(int searchValue) {
+        int low = 0, high = cloneArr.length - 1;
         while (low <= high) {
             int mid = (high - low) / 2 + low;
-            if (array[mid] == searchValue) {
+            if (cloneArr[mid] == searchValue) {
                 return mid;
             }
-            if (array[mid] < searchValue) {
+            if (cloneArr[mid] < searchValue) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
@@ -37,18 +38,8 @@ public class BinarySearch {
         }
         return -1;
     }
-
-    public int getSearchIndex(boolean sortOnOriginal, int searchValue) {
-        int[] array = arr;
-        if(!sortOnOriginal){
-            array = ArrayUtils.cloneArray(arr);
-        }
-        return search(array, searchValue);
-    }
     
     public int[] getSortedArray(){
-        int[] array = ArrayUtils.cloneArray(arr);
-        Arrays.sort(array);
-        return array;
+        return cloneArr;
     }
 }
