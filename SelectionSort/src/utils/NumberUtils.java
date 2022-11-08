@@ -1,16 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package utils;
 
-import java.util.Random;
 import java.util.Scanner;
-
-/**
- *
- * @author khang
- */
 public class NumberUtils {
 
     public static int getRandomNumberInRange(int min, int max) {
@@ -38,10 +29,6 @@ public class NumberUtils {
 
         } while (true);
 
-    }
-
-    public static int inputInt(String mess) {
-        return inputInt(mess, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
 }
