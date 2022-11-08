@@ -36,7 +36,7 @@ public class QuickSort {
         return array;
     }
 
-    private int partition(int arr[], int startIndex, int endIndex, boolean isAsc) {
+    private int partition(int[] arr, int startIndex, int endIndex, boolean isAsc) {
         int pivot = arr[endIndex];
         int i = startIndex - 1;
         for (int j = startIndex; j <= endIndex - 1; j++) {
